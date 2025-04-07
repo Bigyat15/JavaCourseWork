@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import controller.EncryptDecrypt;
 import database.DatabaseConnection;
 import models.registerModel;
 
@@ -20,6 +21,8 @@ public class registerDAO {
 	}
 	public boolean addRegistrationDetail(registerModel register) throws SQLException {
 		boolean hasInserted = false;
+		EncryptDecrypt ed = new EncryptDecrypt();
+		String encryptedPassword = ed.encrypt(register.getPassword());
 		if(con == null) {
 			System.out.println("Nothing has been inserted.");
 			return hasInserted;
@@ -31,7 +34,7 @@ public class registerDAO {
 			ps.setString(3, register.getDOB());
 			ps.setString(4,register.getEmail());
 			ps.setString(5, register.getPhoneNumber());
-			ps.setString(6, register.getPassword());
+			ps.setString(6, encryptedPassword);
 			ps.setObject(7,register.getCreated_at());
 			ps.setObject(8, register.getUpdated_at());
 			
