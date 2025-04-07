@@ -19,16 +19,24 @@ public class registerModel {
 		DOB = dOB;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		this.isAdmin = isAdmin;
+		this.isAdmin = false;
 		this.created_at = LocalDateTime.now();
 		this.updated_at = LocalDateTime.now();
 		this.password = password;
 	}
 
+	
+//	public registerModel(String first_name2, String last_name2, String dOB2, String email2, String phoneNumber2,
+//			String password2, String confirmPassword) {
+//		// TODO Auto-generated constructor stub
+//	}
+
+
 	public registerModel(String first_name2, String last_name2, String dOB2, String email2, String phoneNumber2,
 			String password2, String confirmPassword) {
 		// TODO Auto-generated constructor stub
 	}
+
 
 	public String getFirst_name() {
 		return first_name;

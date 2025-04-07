@@ -24,7 +24,7 @@ public class registerDAO {
 			System.out.println("Nothing has been inserted.");
 			return hasInserted;
 		}
-		String query = "";
+		String query = "Insert INTO User(first_name,last_name,dob,email,phone_number,password,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?)";
 		try(PreparedStatement ps = con.prepareStatement(query)){
 			ps.setString(1, register.getFirst_name());
 			ps.setString(2,register.getLast_name());
@@ -32,9 +32,12 @@ public class registerDAO {
 			ps.setString(4,register.getEmail());
 			ps.setString(5, register.getPhoneNumber());
 			ps.setString(6, register.getPassword());
+			ps.setObject(7,register.getCreated_at());
+			ps.setObject(8, register.getUpdated_at());
 			
 			hasInserted = ps.executeUpdate() > 0;
 		}catch(SQLException e) {
+			System.err.println("SQL Error: " + e.getMessage());
 			e.printStackTrace();
 		}
 		return hasInserted;
