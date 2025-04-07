@@ -46,23 +46,28 @@ public class login extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		if(email==null||email.trim().isEmpty()) {
-			response.sendRedirect("login.jsp?error=email");
+			response.sendRedirect(request.getContextPath() + "/pages/login.jsp?error=email");
+			return;
 		}
 		if(password==null||password.trim().isEmpty()) {
-			response.sendRedirect("login.jsp?error=password");
+			response.sendRedirect(request.getContextPath() +"/pages/login.jsp?error=password");
+			return;
 		}
 		
 		loginModel login = new loginModel(email,password);
 		try {
 			boolean success = dao.loginAttempt(login);
 			if(success) {
-				response.sendRedirect("login.jsp?status=success");
+				response.sendRedirect(request.getContextPath() +"/pages/login.jsp?status=success");
+				return;
 			}else {
-				response.sendRedirect("login.jsp?status=failed");
+				response.sendRedirect(request.getContextPath() +"/pages/login.jsp?status=failed");
+				return;
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
-			response.sendRedirect("login.jsp?status=DatabaseError");
+			response.sendRedirect(request.getContextPath() +"/pages/login.jsp?status=DatabaseError");
+			return;
 		}
 	}
 
