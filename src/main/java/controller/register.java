@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.registerModel;
+
 /**
  * Servlet implementation class register
  */
@@ -35,7 +37,15 @@ public class register extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String first_name = request.getParameter("firstName");
+		String last_name = request.getParameter("last_name");
+		String DOB = request.getParameter("dob");
+		String email = request.getParameter("email");
+		String phoneNumber = request.getParameter("phoneNumber");
+		String password = request.getParameter("password");
+		String confirmPassword = request.getParameter("confirmPassword");
+		
+		registerModel register = new registerModel(first_name,last_name,DOB,email,phoneNumber,password,confirmPassword);
 	}
 
 }

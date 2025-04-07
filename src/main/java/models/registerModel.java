@@ -9,11 +9,11 @@ public class registerModel {
 	private String email;
 	private String phoneNumber;
 	private boolean isAdmin;
+	private String password;
 	private LocalDateTime created_at;
 	private LocalDateTime updated_at;
 	public registerModel(String first_name, String last_name, String dOB, String email, String phoneNumber,
-			boolean isAdmin, LocalDateTime created_at, LocalDateTime updated_at) {
-		super();
+			boolean isAdmin, LocalDateTime created_at, LocalDateTime updated_at,String password) {
 		this.first_name = first_name;
 		this.last_name = last_name;
 		DOB = dOB;
@@ -22,7 +22,14 @@ public class registerModel {
 		this.isAdmin = isAdmin;
 		this.created_at = LocalDateTime.now();
 		this.updated_at = LocalDateTime.now();
+		this.password = password;
 	}
+
+	public registerModel(String first_name2, String last_name2, String dOB2, String email2, String phoneNumber2,
+			String password2, String confirmPassword) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getFirst_name() {
 		return first_name;
 	}
@@ -64,6 +71,13 @@ public class registerModel {
 	}
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
+		updateTimestamps();
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 		updateTimestamps();
 	}
 	public LocalDateTime getCreated_at() {
