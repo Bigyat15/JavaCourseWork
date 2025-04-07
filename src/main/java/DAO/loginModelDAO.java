@@ -25,7 +25,7 @@ public class loginModelDAO {
 			System.out.println("Connection failed successfully....");
 			return checked;
 		}
-		String query = "Select password FROM users WHERE email=?";
+		String query = "Select password FROM User WHERE email=?";
 		try(PreparedStatement ps = con.prepareStatement(query)){
 			ps.setNString(1, login.getEmail());
 			
@@ -33,9 +33,9 @@ public class loginModelDAO {
 			if(rs.next()) {
 				String encryptedPassword = rs.getString("password");
 				EncryptDecrypt ed = new EncryptDecrypt();
-				String decryptedPassword = ed.decrypt(encryptedPassword);
+				String decryptedPassword = ed.encrypt(login.getPassword());
 				
-				if(decryptedPassword != null && decryptedPassword.equals(login.getPassword())) {
+				if(decryptedPassword != null && encryptedPassword.equals(encryptedPassword)) {
 					checked = true;
 				}
 			}
