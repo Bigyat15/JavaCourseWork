@@ -1,67 +1,67 @@
 package models;
 
 public class carModel {
-	private String carName;
-	private String carDescription;
-	private Integer carQuantity;
-	private Double carPrice;
-	private String carBrand;
-	private Integer carYear;
-	private Integer carModel;
-	
-	public carModel(String carName, String carDescription, Integer carQuantity, Double carPrice, String carBrand,
-			Integer carYear, Integer carModel) {
+	private String car_name;
+	private String car_description;
+	private Integer car_quantity;
+	private Double car_price;
+	private String car_brand;
+	private Integer car_year;
+	private Integer car_model;
+	public carModel(String car_name, String car_description, Integer car_quantity, Double car_price, String car_brand,
+			Integer car_year, Integer car_model) {
 		super();
-		this.carName = carName;
-		this.carDescription = carDescription;
-		this.carQuantity = carQuantity;
-		this.carPrice = carPrice;
-		this.carBrand = carBrand;
-		this.carYear = carYear;
-		this.carModel = carModel;
-		
+		this.car_name = car_name;
+		this.car_description = car_description;
+		this.car_quantity = car_quantity;
+		this.car_price = car_price;
+		this.car_brand = car_brand;
+		this.car_year = car_year;
+		this.car_model = car_model;
 	}
-	public String getCarName() {
-		return carName;
+	public String getCar_name() {
+		return car_name;
 	}
-	public void setCarName(String carName) {
-		this.carName = carName;
+	public void setCar_name(String car_name) {
+		this.car_name = car_name;
 	}
-	public String getCarDescription() {
-		return carDescription;
+	public String getCar_description() {
+		return car_description;
 	}
-	public void setCarDescription(String carDescription) {
-		this.carDescription = carDescription;
+	public void setCar_description(String car_description) {
+		this.car_description = car_description;
 	}
-	public Integer getCarQuantity() {
-		return carQuantity;
+	public Integer getCar_quantity() {
+		return car_quantity;
 	}
-	public void setCarQuantity(Integer carQuantity) {
-		this.carQuantity = carQuantity;
+	public void setCar_quantity(Integer car_quantity) {
+		this.car_quantity = car_quantity;
 	}
-	public Double getCarPrice() {
-		return carPrice;
+	public Double getCar_price() {
+		return car_price;
 	}
-	public void setCarPrice(Double carPrice) {
-		this.carPrice = carPrice;
+	public void setCar_price(Double car_price) {
+		this.car_price = car_price;
 	}
-	public String getCarBrand() {
-		return carBrand;
+	public String getCar_brand() {
+		return car_brand;
 	}
-	public void setCarBrand(String carBrand) {
-		this.carBrand = carBrand;
+	public void setCar_brand(String car_brand) {
+		this.car_brand = car_brand;
 	}
-	public Integer getCarYear() {
-		return carYear;
+	public Integer getCar_year() {
+		return car_year;
 	}
-	public void setCarYear(Integer carYear) {
-		this.carYear = carYear;
+	public void setCar_year(Integer car_year) {
+		this.car_year = car_year;
 	}
-	public Integer getCarModel() {
-		return carModel;
+	public Integer getCar_model() {
+		return car_model;
 	}
-	public void setCarModel(Integer carModel) {
-		this.carModel = carModel;
+	public void setCar_model(Integer car_model) {
+		this.car_model = car_model;
 	}
-		
+	
+	
+	
 }
