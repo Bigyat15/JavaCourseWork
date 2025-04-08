@@ -1,0 +1,325 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Motors - Premium Car Collection</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'dm-sans': ['DM Sans', 'sans-serif'],
+            'space-grotesk': ['Space Grotesk', 'sans-serif'],
+            'italiana': ['Italiana', 'serif'],
+            'cinzel': ['Cinzel', 'serif'],
+            'playfair': ['Playfair', 'serif'],
+            'poppins': ['Poppins', 'sans-serif'],
+            'roboto-flex': ['Roboto Flex', 'sans-serif']
+          },
+          colors: {
+            'luxury-gold': '#D4AF37',
+            'carbon-black': '#1A1A1A',
+            'racing-red': '#FF0000',
+            'metallic-silver': '#C0C0C0',
+            primary: '#1a1a1a',
+            secondary: '#e5e5e5',
+            accent: '#b8860b',
+          },
+          animation: {
+            'scroll': 'scroll 50s linear infinite',
+            'fade-in': 'fadeIn 1s ease-in',
+            'slide-up': 'slideUp 1s ease-out',
+            'glow': 'glow 2s ease-in-out infinite',
+          },
+          keyframes: {
+            scroll: {
+              '0%': { transform: 'translateX(0)' },
+              '50%': { transform: 'translateX(-50%)' },
+              '100%': { transform: 'translateX(-100%)' }
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' }
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(100px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' }
+            },
+            glow: {
+              '0%, 100%': { textShadow: '0 0 10px rgba(255,255,255,0.5)' },
+              '50%': { textShadow: '0 0 20px rgba(255,255,255,0.8)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Grotesk:wght@300..700&family=Italiana&family=Cinzel:wght@400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/c3ca5c064a.js" crossorigin="anonymous"></script>
+
+  <!-- Lenis Smooth Scrolling -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.25/bundled/lenis.min.js"></script>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-primary text-white">
+  <!-- First Section -->
+  <section class="relative h-screen overflow-hidden">
+    <!-- Background Video -->
+    <video autoplay loop muted class="absolute top-0 left-0 w-full h-full object-cover -z-10">
+      <source src="../vedios/new2.mp4" type="video/mp4">
+      <source src="../vedios/luxury-car-showcase.mp4" type="video/mp4">
+      <source src="../vedios/exotic-car-drive.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Background Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/80 to-primary/40 z-10"></div>
+
+    <!-- HORIZONTAL SCROLLING -->
+    <div class="relative w-full overflow-hidden bg-white z-10 py-2.5 mt-[100vh]">
+      <div class="whitespace-nowrap flex animate-scroll">
+        <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
+          PAGANI <img src="../images/Pagani-Logo-PNG-Clipart-Background.png" alt="pagani logo" class="h-6 md:h-8 mx-5 md:mx-10"> KOENIGSEGG <img src="../images/koenigsegg.png" alt="koenigsegg logo" class="h-16 md:h-24 lg:h-32 mx-5 md:mx-10"> LAMBORGHINI <img src="../images/lambo.png" alt="lamborghini logo" class="h-12 md:h-16 lg:h-20 mx-5 md:mx-10"> BUGATTI <img src="../images/bugatti.png" alt="bugatti logo" class="h-12 md:h-16 lg:h-20 mx-5 md:mx-10">
+        </div>
+        <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
+          FERRARI <img src="../images/ferrari.png" alt="ferrari logo" class="h-12 md:h-16 lg:h-20 mx-5 md:mx-10"> APOLLO <img src="../images/Aurelia Logo-01.png" alt="aurelia logo" class="h-24 md:h-36 lg:h-45 mx-5 md:mx-10"> BMW <img src="../images/bmw.png" alt="bmw logo" class="h-12 md:h-16 lg:h-20 mx-5 md:mx-10"> MERCEDES <img src="../images/mercedes.png" alt="mercedes logo" class="h-8 md:h-10 lg:h-12 mx-5 md:mx-10">
+        </div>
+        <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
+          NISSAN <img src="../images/nissan.png" alt="nissan logo" class="h-12 md:h-16 lg:h-20 mx-5 md:mx-10"> TOYOTA <img src="../images/toyota.png" alt="toyota logo" class="h-12 md:h-16 lg:h-20 mx-5 md:mx-10"> MCLAREN <img src="../images/mclaren.png" alt="mclaren logo" class="h-12 md:h-16 lg:h-20 mx-5 md:mx-10"> PORSCHE <img src="../images/porsche.png" alt="porsche logo" class="h-12 md:h-16 lg:h-20 mx-5 md:mx-10">
+        </div>
+
+        <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
+          PAGANI <img src="../images/Pagani-Logo-PNG-Clipart-Background.png" alt="pagani logo" class="h-6 md:h-8 mx-5 md:mx-10"> KOENIGSEGG <img src="../images/koenigsegg.png" alt="koenigsegg logo" class="h-16 md:h-24 lg:h-32 mx-5 md:mx-10"> LAMBORGHINI <img src="../images/lambo.png" alt="lamborghini logo" class="h-12 md:h-16 lg:h-20 mx-5 md:mx-10"> BUGATTI <img src="../images/bugatti.png" alt="bugatti logo" class="h-12 md:h-16 lg:h-20 mx-5 md:mx-10">
+        </div>
+        <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
+          FERRARI <img src="../images/ferrari.png" alt="ferrari logo" class="h-12 md:h-16 lg:h-20 mx-5 md:mx-10"> APOLLO <img src="../images/Aurelia Logo-01.png" alt="aurelia logo" class="h-24 md:h-36 lg:h-45 mx-5 md:mx-10"> BMW <img src="../images/bmw.png" alt="bmw logo" class="h-12 md:h-16 lg:h-20 mx-5 md:mx-10"> MERCEDES <img src="../images/mercedes.png" alt="mercedes logo" class="h-8 md:h-10 lg:h-12 mx-5 md:mx-10">
+        </div>
+        <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
+          NISSAN <img src="../images/nissan.png" alt="nissan logo" class="h-12 md:h-16 lg:h-20 mx-5 md:mx-10"> TOYOTA <img src="../images/toyota.png" alt="toyota logo" class="h-12 md:h-16 lg:h-20 mx-5 md:mx-10"> MCLAREN <img src="../images/mclaren.png" alt="mclaren logo" class="h-12 md:h-16 lg:h-20 mx-5 md:mx-10"> PORSCHE <img src="../images/porsche.png" alt="porsche logo" class="h-12 md:h-16 lg:h-20 mx-5 md:mx-10">
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Title -->
+    <div class="absolute top-1/2 left-4 md:left-24 -translate-y-1/2 text-white font-space-grotesk z-20 text-left animate-fade-in">
+      <h3 class="text-sm md:text-lg lg:text-xl font-medium text-accent tracking-widest">LUXURY MOTORS: THE EPITOME OF LUXURY</h3>
+      <h1 class="text-4xl md:text-5xl lg:text-7xl font-semibold mb-5 w-full md:w-4/5 tracking-widest animate-glow">DRIVE THE EXTRAORDINARY</h1>
+      <a href="#" class="text-4xl md:text-5xl lg:text-6xl text-accent hover:text-white transition-colors duration-300"><i class="fa-solid fa-angles-right"></i></a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-30 flex items-center justify-end p-4 bg-transparent">
+      <div class="absolute left-1/2 -translate-x-1/2">
+        <img src="../images/aurelia white.png" alt="Logo" class="h-24 md:h-32 lg:h-36">
+      </div>
+      <div id="hamburger" class="hamburger w-8 h-6 relative cursor-pointer transition-all duration-300 z-40 group">
+        <span class="absolute h-0.5 w-full bg-accent left-0 rounded transition-all duration-300 group-hover:bg-white"></span>
+        <span class="absolute h-0.5 w-full bg-accent left-0 top-2 rounded transition-all duration-300 group-hover:bg-white"></span>
+        <span class="absolute h-0.5 w-full bg-accent left-0 top-4 rounded transition-all duration-300 group-hover:bg-white"></span>
+      </div>
+    </nav>
+
+    <!-- Side Menu -->
+    <div id="sideMenu" class="fixed top-0 right-0 w-64 md:w-80 h-full bg-primary transform translate-x-full transition-transform duration-300 ease-in-out z-50 border-l border-accent/20">
+      <div class="p-6">
+        <ul class="space-y-6">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle text-white text-lg hover:text-accent transition-colors duration-300 flex items-center justify-between">
+              Discover
+              <i class="fas fa-chevron-down ml-2 text-sm"></i>
+            </a>
+            <ul class="dropdown-menu hidden pl-4 mt-2 space-y-2">
+              <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Luxury Motors</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Exotic Sports Cars</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Exotic Super Cars</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Super Cars</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle text-white text-lg hover:text-accent transition-colors duration-300 flex items-center justify-between">
+              Legal
+              <i class="fas fa-chevron-down ml-2 text-sm"></i>
+            </a>
+            <ul class="dropdown-menu hidden pl-4 mt-2 space-y-2">
+              <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Legal Notices</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Privacy Policy</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-accent transition-colors duration-300">Cookie Policy</a></li>
+            </ul>
+          </li>
+          <li><a href="#" class="text-white text-lg hover:text-accent transition-colors duration-300">Contact</a></li>
+          <li><a href="#" class="text-white text-lg hover:text-accent transition-colors duration-300">About</a></li>
+        </ul>
+        <div class="mt-8 flex gap-4">
+          <a href="#" class="text-gray-300 text-xl hover:text-accent transition-colors duration-300"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="text-gray-300 text-xl hover:text-accent transition-colors duration-300"><i class="fa-brands fa-square-instagram"></i></a>
+          <a href="#" class="text-gray-300 text-xl hover:text-accent transition-colors duration-300"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="text-gray-300 text-xl hover:text-accent transition-colors duration-300"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black/80 z-40 hidden"></div>
+  </section>
+
+  <!-- Second Section -->
+  <section class="relative h-screen flex justify-center items-center text-center bg-cover bg-center bg-no-repeat">
+    <video autoplay loop muted class="absolute top-0 left-0 w-full h-full object-cover -z-10">
+      <source src="../vedios/luxury-car-drive.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/80 to-primary/40 z-10"></div>
+    <div class="relative z-20 max-w-6xl mx-auto p-5 text-center text-white font-italiana animate-slide-up">
+      <h2 class="text-3xl md:text-4xl lg:text-6xl font-medium tracking-wider mb-10 text-accent">"Experience the Pinnacle of Performance, Luxury, and Exclusivity"</h2>
+      <a href="#" class="inline-block px-6 md:px-12 py-2.5 md:py-3.5 text-lg md:text-2xl bg-accent/75 text-primary font-cinzel font-medium tracking-wider rounded-full transition-all duration-300 hover:bg-primary/75 hover:text-accent border border-accent/50">DISCOVER NOW</a>
+    </div>
+  </section>
+
+  <!-- Third Section -->
+  <section class="h-[15vh] md:h-[20vh] bg-primary text-accent flex justify-center items-center font-dm-sans text-xl md:text-2xl lg:text-3xl tracking-widest border-y border-accent/20">
+    <h1 class="font-medium animate-glow">LUXURY MOTORS PRESENTS</h1>
+  </section>
+
+  <!-- Fourth Section -->
+  <section class="relative h-screen overflow-hidden px-4 md:px-10 pb-10 flex items-center justify-center z-10 bg-primary">
+    <video autoplay muted loop playsinline class="absolute top-0 left-0 md:left-[5%] w-full md:w-[90%] h-full object-cover -z-10 pointer-events-none">
+      <source src="../vedios/KOENIGSEGG Jesko Absolut.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-primary/80 to-primary/40 z-0"></div>
+    <div class="z-20 text-white text-center max-w-4xl font-space-grotesk flex items-center justify-center flex-col animate-fade-in">
+      <h1 class="text-2xl md:text-3xl lg:text-4xl font-normal mb-3.5 text-accent">A RECORD-BREAKING FORCE OF NATURE</h1>
+      <p class="w-full md:w-4/5 text-base md:text-lg mb-8 leading-6 md:leading-8">Koenigsegg Shatters the 400km/hr Record. A triumph of passion, speed and performance.</p>
+      <button class="bg-transparent text-accent border border-accent py-2 md:py-3 px-4 md:px-6 tracking-widest cursor-pointer transition-all duration-300 hover:bg-accent/20 hover:text-white">WATCH NOW</button>
+    </div>
+  </section>
+
+  <!-- Fifth Section -->
+  <section class="h-[25vh] md:h-[35vh] bg-primary text-accent flex justify-center items-end border-y border-accent/20">
+    <div class="mb-8 text-center font-dm-sans">
+      <h1 class="text-4xl md:text-5xl lg:text-7xl font-light tracking-widest mb-2.5 animate-glow">OUR LUXURY CARS</h1>
+      <p class="text-base md:text-lg">The quintessence of luxury and speed</p>
+    </div>
+  </section>
+
+  <!-- Sixth Section -->
+  <section class="min-h-screen bg-gradient-to-b from-primary to-gray-900 flex items-center justify-center p-4 md:p-10 font-space-grotesk">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl w-full">
+      <!-- Card 1 -->
+      <div class="bg-gradient-to-b from-primary to-gray-900 text-white border-l border-t border-accent/20 transition-all duration-300 hover:shadow-2xl hover:border-accent/50">
+        <div class="overflow-hidden relative h-48 md:h-64">
+          <img src="../images/sixth section images/1.jpg" alt="Exotic Sport Car" class="w-full h-full object-cover border-r border-b border-accent/20 transition-transform duration-300 hover:scale-110" />
+        </div>
+        <div class="p-4 md:p-5">
+          <h2 class="text-xl md:text-2xl font-normal tracking-widest mb-5 text-accent">EXOTIC SPORT</h2>
+          <p class="text-xs md:text-sm leading-5 md:leading-6 text-gray-300 tracking-widest mb-6">
+            A perfect mix of style, agility, and power, delivering an exhilarating yet refined drive.
+          </p>
+          <button class="bg-accent/20 text-accent border-none py-2 md:py-2.5 px-6 md:px-8 text-xs md:text-sm tracking-widest rounded-full cursor-pointer transition-all duration-300 hover:bg-accent hover:text-primary">BROWSE</button>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-gradient-to-b from-primary to-gray-900 text-white border-l border-t border-accent/20 transition-all duration-300 hover:shadow-2xl hover:border-accent/50">
+        <div class="overflow-hidden relative h-48 md:h-64">
+          <img src="../images/sixth section images/2.jpg" alt="Exotic Car" class="w-full h-full object-cover border-r border-b border-accent/20 transition-transform duration-300 hover:scale-110" />
+        </div>
+        <div class="p-4 md:p-5">
+          <h2 class="text-xl md:text-2xl font-normal tracking-widest mb-5 text-accent">EXOTIC CARS</h2>
+          <p class="text-xs md:text-sm leading-5 md:leading-6 text-gray-300 tracking-widest mb-6">
+            Ultra-rare, high-performance masterpieces that combines luxury and innovation.
+          </p>
+          <button class="bg-accent/20 text-accent border-none py-2 md:py-2.5 px-6 md:px-8 text-xs md:text-sm tracking-widest rounded-full cursor-pointer transition-all duration-300 hover:bg-accent hover:text-primary">BROWSE</button>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-gradient-to-b from-primary to-gray-900 text-white border-l border-t border-accent/20 transition-all duration-300 hover:shadow-2xl hover:border-accent/50">
+        <div class="overflow-hidden relative h-48 md:h-64">
+          <img src="../images/sixth section images/3.jpg" alt="Super Car" class="w-full h-full object-cover border-r border-b border-accent/20 transition-transform duration-300 hover:scale-110" />
+        </div>
+        <div class="p-4 md:p-5">
+          <h2 class="text-xl md:text-2xl font-normal tracking-widest mb-5 text-accent">SUPER CARS</h2>
+          <p class="text-xs md:text-sm leading-5 md:leading-6 text-gray-300 tracking-widest mb-6">
+            Blazing speed, cutting-edge aerodynamics, and track-ready performance in an elite package.
+          </p>
+          <button class="bg-accent/20 text-accent border-none py-2 md:py-2.5 px-6 md:px-8 text-xs md:text-sm tracking-widest rounded-full cursor-pointer transition-all duration-300 hover:bg-accent hover:text-primary">BROWSE</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seventh Section -->
+  <section class="h-[20vh] md:h-[30vh] bg-gradient-to-t from-primary to-gray-900 text-accent flex justify-center items-end border-t border-accent/20">
+    <div class="mb-5 text-center font-dm-sans">
+      <h1 class="text-4xl md:text-5xl lg:text-7xl font-light tracking-widest font-italiana animate-glow">LUXURY MOTORS</h1>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-primary px-6 md:px-12 pt-8 md:pt-12 pb-4 font-space-grotesk border-t border-accent/20">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 text-white">
+      <div class="w-full">
+        <h3 class="text-base font-semibold mb-2.5 text-accent">Discover</h3>
+        <ul>
+          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300">DISCOVER Luxury Motors</a></li>
+          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300">Exotic Sports Cars</a></li>
+          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300">Exotic Super Cars</a></li>
+          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300">Super Cars</a></li>
+          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300">Customer Service</a></li>
+        </ul>
+      </div>
+
+      <div class="w-full">
+        <h3 class="text-base font-semibold mb-2.5 text-accent">Legal</h3>
+        <ul>
+          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300">Legal Notices</a></li>
+          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300">Privacy Policy</a></li>
+          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300">Cookie Policy</a></li>
+          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="w-full flex flex-col">
+        <h3 class="text-base font-semibold mb-2.5 text-accent">Additional Links</h3>
+        <ul>
+          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300">Blog</a></li>
+          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300">Cart</a></li>
+          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300">Sign In</a></li>
+          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300">History</a></li>
+        </ul>
+
+        <div class="flex gap-5 mt-2.5">
+          <a href="#" class="text-gray-300 text-xl md:text-2xl hover:text-accent transition-colors duration-300"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="text-gray-300 text-xl md:text-2xl hover:text-accent transition-colors duration-300"><i class="fa-brands fa-square-instagram"></i></a>
+          <a href="#" class="text-gray-300 text-xl md:text-2xl hover:text-accent transition-colors duration-300"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="text-gray-300 text-xl md:text-2xl hover:text-accent transition-colors duration-300"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5 text-accent">
+      <p class="text-xs">© 2024 LUXURY MOTORS. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html> 
