@@ -36,6 +36,8 @@
                     animation: {
                         'fade-in': 'fadeIn 1s ease-in',
                         'slide-up': 'slideUp 1s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite',
                     },
                     keyframes: {
                         fadeIn: {
@@ -45,6 +47,14 @@
                         slideUp: {
                             '0%': { transform: 'translateY(100px)', opacity: '0' },
                             '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        glow: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(184, 134, 11, 0.2)' },
+                            '50%': { boxShadow: '0 0 30px rgba(184, 134, 11, 0.4)' }
                         }
                     }
                 }
@@ -61,25 +71,69 @@
     <script src="https://kit.fontawesome.com/c3ca5c064a.js" crossorigin="anonymous"></script>
 
     <style>
-        .elegant-border {
-            position: relative;
+        .glass-effect {
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(184, 134, 11, 0.1);
         }
-        .elegant-border::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: #b8860b;
-            transition: width 0.3s ease;
+        .modern-input {
+            background: rgba(26, 26, 26, 0.5);
+            border: 1px solid rgba(184, 134, 11, 0.2);
+            transition: all 0.3s ease;
         }
-        .elegant-border:hover::after {
-            width: 100%;
-        }
-        .input-focus:focus {
+        .modern-input:focus {
+            background: rgba(26, 26, 26, 0.7);
             border-color: #b8860b;
-            box-shadow: 0 0 0 1px #b8860b;
+            box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.2);
+        }
+        .modern-button {
+            background: linear-gradient(45deg, #b8860b, #d4af37);
+            transition: all 0.3s ease;
+        }
+        .modern-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(184, 134, 11, 0.3);
+        }
+        .social-button {
+            background: rgba(26, 26, 26, 0.5);
+            border: 1px solid rgba(184, 134, 11, 0.2);
+            transition: all 0.3s ease;
+        }
+        .social-button:hover {
+            background: rgba(184, 134, 11, 0.1);
+            transform: translateY(-2px);
+        }
+        .password-toggle {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .password-toggle:hover {
+            transform: scale(1.1);
+        }
+        .modern-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #b8860b;
+            border-radius: 4px;
+            background-color: transparent;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .modern-checkbox:checked {
+            background-color: #b8860b;
+        }
+        .modern-checkbox:checked::after {
+            content: '✓';
+            position: absolute;
+            color: #1a1a1a;
+            font-size: 14px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
     </style>
 </head>
@@ -95,26 +149,33 @@
 
     <!-- Main Content -->
     <div class="min-h-screen flex items-center justify-center px-4 py-12">
-        <div class="max-w-md w-full space-y-8 bg-primary/80 backdrop-blur-sm p-8 rounded-2xl border border-accent/20 shadow-2xl animate-fade-in">
+        <div class="max-w-md w-full space-y-8 glass-effect p-8 rounded-2xl shadow-2xl animate-fade-in animate-glow">
             <!-- Logo -->
-            <div class="text-center">
+            <div class="text-center animate-float">
                 <img src="/CollegeTutorial/images/aurelia white.png" alt="Luxury Motors Logo" class="mx-auto h-24 md:h-32">
                 <h2 class="mt-6 text-3xl font-italiana text-accent tracking-widest">Welcome Back</h2>
                 <p class="mt-2 text-sm text-gray-300">Enter your credentials to access your account</p>
             </div>
 
             <!-- Login Form -->
-            <form class="mt-8 space-y-6" action="../login" method="POST">
+            <form class="mt-8 space-y-6" action="${pageContext.request.contextPath}/login" method="POST">
                 <div class="rounded-md shadow-sm space-y-4">
+                <% String error = request.getParameter("error"); %>
+                <% if(error != null && error.equals("failed")){ %>
+                	<p class="text-red-400 text-center flex items-center justify-center gap-2">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Invalid email or password. Please try again.
+                    </p>
+                	<%} %>
                     <!-- Email Input -->
                     <div>
                         <label for="email" class="sr-only">Email address</label>
-                        <div class="relative">
+                        <div class="relative group">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <i class="fas fa-envelope text-accent"></i>
+                                <i class="fas fa-envelope text-accent group-hover:text-white transition-colors duration-300"></i>
                             </div>
                             <input id="email" name="email" type="email" required 
-                                class="appearance-none rounded-lg relative block w-full px-3 py-3 pl-10 border border-accent/20 bg-primary/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 sm:text-sm input-focus"
+                                class="modern-input appearance-none rounded-lg relative block w-full px-3 py-3 pl-10 text-white placeholder-gray-400 focus:outline-none sm:text-sm"
                                 placeholder="Email address">
                         </div>
                     </div>
@@ -122,13 +183,16 @@
                     <!-- Password Input -->
                     <div>
                         <label for="password" class="sr-only">Password</label>
-                        <div class="relative">
+                        <div class="relative group">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <i class="fas fa-lock text-accent"></i>
+                                <i class="fas fa-lock text-accent group-hover:text-white transition-colors duration-300"></i>
                             </div>
                             <input id="password" name="password" type="password" required 
-                                class="appearance-none rounded-lg relative block w-full px-3 py-3 pl-10 border border-accent/20 bg-primary/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 sm:text-sm input-focus"
+                                class="modern-input appearance-none rounded-lg relative block w-full px-3 py-3 pl-10 pr-10 text-white placeholder-gray-400 focus:outline-none sm:text-sm"
                                 placeholder="Password">
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                                <i class="fas fa-eye-slash text-accent password-toggle group-hover:text-white transition-colors duration-300" onclick="togglePassword()"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -137,14 +201,14 @@
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
                         <input id="remember-me" name="remember-me" type="checkbox" 
-                            class="h-4 w-4 text-accent focus:ring-accent border-accent/20 rounded bg-primary/50">
+                            class="modern-checkbox">
                         <label for="remember-me" class="ml-2 block text-sm text-gray-300">
                             Remember me
                         </label>
                     </div>
 
                     <div class="text-sm">
-                        <a href="#" class="font-medium text-accent hover:text-white transition-colors duration-300 elegant-border">
+                        <a href="#" class="font-medium text-accent hover:text-white transition-colors duration-300">
                             Forgot your password?
                         </a>
                     </div>
@@ -153,7 +217,7 @@
                 <!-- Submit Button -->
                 <div>
                     <button type="submit" 
-                        class="group relative w-full flex justify-center py-3 px-4 border border-accent/50 text-sm font-medium rounded-lg text-primary bg-accent hover:bg-accent/80 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-all duration-300">
+                        class="modern-button group relative w-full flex justify-center py-3 px-4 text-sm font-medium rounded-lg text-primary hover:text-white focus:outline-none">
                         <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                             <i class="fas fa-sign-in-alt text-primary group-hover:text-white transition-colors duration-300"></i>
                         </span>
@@ -166,47 +230,37 @@
             <div class="text-center mt-6">
                 <p class="text-sm text-gray-300">
                     Don't have an account?
-                    <a href="#" class="font-medium text-accent hover:text-white transition-colors duration-300 elegant-border">
+                    <a href="#" class="font-medium text-accent hover:text-white transition-colors duration-300">
                         Register now
                     </a>
                 </p>
             </div>
 
             <!-- Social Login -->
-            <div class="mt-6">
-                <div class="relative">
-                    <div class="absolute inset-0 flex items-center">
-                        <div class="w-full border-t border-accent/20"></div>
-                    </div>
-                    <div class="relative flex justify-center text-sm">
-                        <span class="px-2 bg-primary/80 text-gray-300">Or continue with</span>
-                    </div>
-                </div>
-
-                <div class="mt-6 grid grid-cols-3 gap-3">
-                    <div>
-                        <a href="#" class="w-full inline-flex justify-center py-2 px-4 border border-accent/20 rounded-lg shadow-sm bg-primary/50 text-sm font-medium text-gray-300 hover:bg-accent/20 hover:text-accent transition-all duration-300">
-                            <i class="fab fa-google text-accent"></i>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class="w-full inline-flex justify-center py-2 px-4 border border-accent/20 rounded-lg shadow-sm bg-primary/50 text-sm font-medium text-gray-300 hover:bg-accent/20 hover:text-accent transition-all duration-300">
-                            <i class="fab fa-facebook-f text-accent"></i>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class="w-full inline-flex justify-center py-2 px-4 border border-accent/20 rounded-lg shadow-sm bg-primary/50 text-sm font-medium text-gray-300 hover:bg-accent/20 hover:text-accent transition-all duration-300">
-                            <i class="fab fa-apple text-accent"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 
     <!-- Back to Home -->
-    <a href="http://localhost:8080/CollegeTutorial/car" class="fixed bottom-8 right-8 text-accent hover:text-white transition-colors duration-300">
+    <a href="http://localhost:8080/CollegeTutorial/car" class="fixed bottom-8 right-8 text-accent hover:text-white transition-colors duration-300 transform hover:scale-110">
         <i class="fas fa-arrow-left text-2xl"></i>
     </a>
+
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.querySelector('.password-toggle');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            }
+        }
+    </script>
 </body>
 </html>

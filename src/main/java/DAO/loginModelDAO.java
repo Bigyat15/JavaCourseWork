@@ -29,13 +29,14 @@ public class loginModelDAO {
 		try(PreparedStatement ps = con.prepareStatement(query)){
 			ps.setNString(1, login.getEmail());
 			
+			
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
 				String encryptedPassword = rs.getString("password");
 				EncryptDecrypt ed = new EncryptDecrypt();
 				String decryptedPassword = ed.encrypt(login.getPassword());
 				
-				if(decryptedPassword != null && encryptedPassword.equals(encryptedPassword)) {
+				if(decryptedPassword != null && decryptedPassword.equals(encryptedPassword)) {
 					checked = true;
 				}
 			}

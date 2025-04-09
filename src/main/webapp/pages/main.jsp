@@ -197,7 +197,7 @@
           <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">VISIT US</a>
           <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">CONTACT US</a>
           <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">AURELIA STORE</a>
-          <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">SIGN IN</a>
+          <a href="http://localhost:8080/CollegeTutorial/login" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">SIGN IN</a>
           <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">REGISTER</a>
           <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">HISTORY</a>
         </nav>
@@ -560,7 +560,7 @@
         <ul>
           <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">Blog</a></li>
           <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">Cart</a></li>
-          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">Sign In</a></li>
+          <li class="mb-2.5"><a href="lhttp://localhost:8080/CollegeTutorial/login" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">Sign In</a></li>
           <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">History</a></li>
         </ul>
 

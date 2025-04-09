@@ -58,10 +58,10 @@ public class login extends HttpServlet {
 		try {
 			boolean success = dao.loginAttempt(login);
 			if(success) {
-				response.sendRedirect(request.getContextPath() +"/pages/login.jsp?status=success");
+				response.sendRedirect(request.getContextPath() +"/pages/main.jsp");
 				return;
 			}else {
-				response.sendRedirect(request.getContextPath() +"/pages/login.jsp?status=failed");
+				response.sendRedirect(request.getContextPath() +"/pages/login.jsp?error=failed");
 				return;
 			}
 		}catch(SQLException e) {
