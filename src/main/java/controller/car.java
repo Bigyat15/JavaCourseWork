@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.carDAO;
+import DAO.categoryDAO;
 import models.carModel;
+import models.categoryModel;
 
 /**
  * Servlet implementation class car
@@ -19,6 +21,7 @@ import models.carModel;
 public class car extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private carDAO dao;
+	private categoryDAO dao2;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -29,6 +32,8 @@ public class car extends HttpServlet {
     }
     public void init() {
     	dao = new carDAO();
+    	dao2 = new categoryDAO();
+    	
     }
 
 	/**
@@ -43,8 +48,21 @@ public class car extends HttpServlet {
 		for (carModel car : carList) {
 			System.out.println("Car: " + car.getCar_brand());
 		}
+		ArrayList<categoryModel> categoryList = dao2.getAllCategory();
+		request.setAttribute("categoryList", categoryList);
+		System.out.println("Category found successfully"+categoryList.size());
+		for (categoryModel cat : categoryList) {
+		    System.out.println("Category Name: " + cat.getCategory_name());
+		    System.out.println("Category Description: " + cat.getCategory_description());
+		}
+
 		request.setAttribute("carList", carList);
 		request.getRequestDispatcher("/pages/main.jsp").forward(request,response);
+		
+		
+		
+
+		
 	}
 
 	/**

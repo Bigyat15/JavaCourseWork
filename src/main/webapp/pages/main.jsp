@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="models.carModel" %>
+<%@ page import="models.categoryModel" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -127,9 +127,9 @@
   <section class="relative h-screen overflow-hidden">
     <!-- Background Video -->
     <video autoplay loop muted class="absolute top-0 left-0 w-full h-full object-cover z-0">
-      <source src="../vedios/new2.mp4" type="video/mp4">
-      <source src="../vedios/luxury-car-showcase.mp4" type="video/mp4">
-      <source src="../vedios/exotic-car-drive.mp4" type="video/mp4">
+      <source src="/CollegeTutorial/vedios/new2.mp4" type="video/mp4">
+      <source src="/CollegeTutorial/vedios/luxury-car-showcase.mp4" type="video/mp4">
+      <source src="/CollegeTutorial/vedios/exotic-car-drive.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
 
@@ -148,7 +148,7 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 w-full z-30 flex items-center justify-end p-4 bg-transparent">
       <div class="absolute left-1/2 -translate-x-1/2">
-        <img src="../images/aurelia white.png" alt="Logo" class="h-24 md:h-32 lg:h-36">
+        <img src="/CollegeTutorial/images/aurelia white.png" alt="Logo" class="h-24 md:h-32 lg:h-36">
       </div>
       <div id="hamburger" class="hamburger w-8 h-6 relative cursor-pointer transition-all duration-300 z-40 group">
         <span class="absolute h-0.5 w-full bg-accent left-0 rounded transition-all duration-300 group-hover:bg-white"></span>
@@ -162,7 +162,7 @@
       <div class="p-6">
         <!-- Side Menu Logo -->
         <div class="mb-8">
-          <img src="../images/aurelia white.png" alt="Logo" class="h-24 md:h-32">
+          <img src="/CollegeTutorial/images/aurelia white.png" alt="Logo" class="h-24 md:h-32">
         </div>
 
         <!-- Navigation Links -->
@@ -214,84 +214,84 @@
   <div class="relative w-full overflow-hidden bg-white z-20 py-2.5">
     <div class="whitespace-nowrap flex animate-scroll">
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-         <img src="../images/Pagani-Logo-PNG-Clipart-Background.png" alt="pagani logo" class="h-6 md:h-8 mx-8 md:mx-12">
+         <img src="/CollegeTutorial/images/Pagani-Logo-PNG-Clipart-Background.png" alt="pagani logo" class="h-6 md:h-8 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-       <img src="../images/koenigsegg.png" alt="koenigsegg logo" class="h-16 md:h-24 lg:h-32 mx-8 md:mx-12">
+       <img src="/CollegeTutorial/images/koenigsegg.png" alt="koenigsegg logo" class="h-16 md:h-24 lg:h-32 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-        <img src="../images/lambo.png" alt="lamborghini logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
+        <img src="/CollegeTutorial/images/lambo.png" alt="lamborghini logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-       <img src="../images/bugatti.png" alt="bugatti logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
+       <img src="/CollegeTutorial/images/bugatti.png" alt="bugatti logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-        <img src="../images/ferrari.png" alt="ferrari logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
+        <img src="/CollegeTutorial/images/ferrari.png" alt="ferrari logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-     <img src="../images/Aurelia Logo-01.png" alt="aurelia logo" class="h-24 md:h-36 lg:h-45 mx-8 md:mx-12">
+     <img src="/CollegeTutorial/images/Aurelia Logo-01.png" alt="aurelia logo" class="h-24 md:h-36 lg:h-45 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-        <img src="../images/bmw.png" alt="bmw logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
+        <img src="/CollegeTutorial/images/bmw.png" alt="bmw logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-         <img src="../images/mercedes.png" alt="mercedes logo" class="h-8 md:h-10 lg:h-12 mx-8 md:mx-12">
+         <img src="/CollegeTutorial/images/mercedes.png" alt="mercedes logo" class="h-8 md:h-10 lg:h-12 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-      <img src="../images/nissan.png" alt="nissan logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
+      <img src="/CollegeTutorial/images/nissan.png" alt="nissan logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-     <img src="../images/toyota.png" alt="toyota logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
+     <img src="/CollegeTutorial/images/toyota.png" alt="toyota logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-        <img src="../images/mclaren.png" alt="mclaren logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
+        <img src="/CollegeTutorial/images/mclaren.png" alt="mclaren logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-         <img src="../images/porsche.png" alt="porsche logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
+         <img src="/CollegeTutorial/images/porsche.png" alt="porsche logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
 
       <!-- Duplicate for seamless scrolling -->
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-         <img src="../images/Pagani-Logo-PNG-Clipart-Background.png" alt="pagani logo" class="h-6 md:h-8 mx-8 md:mx-12">
+         <img src="/CollegeTutorial/images/Pagani-Logo-PNG-Clipart-Background.png" alt="pagani logo" class="h-6 md:h-8 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-        <img src="../images/koenigsegg.png" alt="koenigsegg logo" class="h-16 md:h-24 lg:h-32 mx-8 md:mx-12">
+        <img src="/CollegeTutorial/images/koenigsegg.png" alt="koenigsegg logo" class="h-16 md:h-24 lg:h-32 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-         <img src="../images/lambo.png" alt="lamborghini logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
+         <img src="/CollegeTutorial/images/lambo.png" alt="lamborghini logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-        <img src="../images/bugatti.png" alt="bugatti logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
+        <img src="/CollegeTutorial/images/bugatti.png" alt="bugatti logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-         <img src="../images/ferrari.png" alt="ferrari logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
+         <img src="/CollegeTutorial/images/ferrari.png" alt="ferrari logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-       <img src="../images/Aurelia Logo-01.png" alt="aurelia logo" class="h-24 md:h-36 lg:h-45 mx-8 md:mx-12">
+       <img src="/CollegeTutorial/images/Aurelia Logo-01.png" alt="aurelia logo" class="h-24 md:h-36 lg:h-45 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-        <img src="../images/bmw.png" alt="bmw logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
+        <img src="/CollegeTutorial/images/bmw.png" alt="bmw logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-         <img src="../images/mercedes.png" alt="mercedes logo" class="h-8 md:h-10 lg:h-12 mx-8 md:mx-12">
+         <img src="/CollegeTutorial/images/mercedes.png" alt="mercedes logo" class="h-8 md:h-10 lg:h-12 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-       <img src="../images/nissan.png" alt="nissan logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
+       <img src="/CollegeTutorial/images/nissan.png" alt="nissan logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-      <img src="../images/toyota.png" alt="toyota logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
+      <img src="/CollegeTutorial/images/toyota.png" alt="toyota logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-       <img src="../images/mclaren.png" alt="mclaren logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
+       <img src="/CollegeTutorial/images/mclaren.png" alt="mclaren logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-         <img src="../images/porsche.png" alt="porsche logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
+         <img src="/CollegeTutorial/images/porsche.png" alt="porsche logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
     </div>
   </div>
 
   <!-- Second Section -->
-  <section class="relative h-screen flex justify-center items-center text-center bg-cover bg-center bg-no-repeat" style="background-image: url('../images/second_section_images/3.jpg');">
+  <section class="relative h-screen flex justify-center items-center text-center bg-cover bg-center bg-no-repeat" style="background-image: url('/CollegeTutorial/images/second_section_images/3.jpg');">
     <div class="absolute inset-0 bg-gradient-to-b from-primary/90 to-primary/40 z-10"></div>
     <div class="relative z-20 max-w-6xl mx-auto p-5 text-center text-white font-italiana animate-slide-up">
       <div class="flex flex-col md:flex-row items-center justify-center gap-8">
@@ -311,7 +311,7 @@
   <!-- Fourth Section -->
   <section class="relative h-screen overflow-hidden px-4 md:px-10 pb-10 flex items-center justify-center z-10 bg-primary">
     <video autoplay muted loop playsinline class="absolute top-0 left-0 md:left-[5%] w-full md:w-[90%] h-full object-cover -z-10 pointer-events-none">
-      <source src="../vedios/KOENIGSEGG Jesko Absolut.mp4" type="video/mp4" />
+      <source src="/CollegeTutorial/vedios/KOENIGSEGG Jesko Absolut.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-primary/90 to-primary/40 z-0"></div>
@@ -333,62 +333,34 @@
   <!-- Sixth Section -->
   <section class="min-h-screen bg-gradient-to-b from-primary to-gray-900 flex items-center justify-center p-4 md:p-10 font-space-grotesk">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl w-full">
-      <!-- Card 1 -->
-      <% ArrayList<carModel> carList =(ArrayList<carModel>) request.getAttribute("carList");
-      	if(carList!=null &&carList.isEmpty()){
-      		for(carModel car: carList){
-      			
-      		
+      <% 
+        ArrayList<categoryModel> categoryList = (ArrayList<categoryModel>) request.getAttribute("categoryList");
+        if (categoryList != null && !categoryList.isEmpty()) {
+            for (categoryModel cat : categoryList) {
       %>
       <div class="bg-gradient-to-b from-primary to-gray-900 text-white border-l border-t border-accent/20 transition-all duration-300 hover:shadow-2xl hover:border-accent/50">
         <div class="overflow-hidden relative h-48 md:h-64">
-          <img src="<%= car.getCategory_image_path() %>" alt="Exotic Sport Car" class="w-full h-full object-cover border-r border-b border-accent/20 transition-transform duration-300 hover:scale-110" />
+          <img src="<%= cat.getCategory_image_path() %>" alt="Exotic Sport Car" class="w-full h-full object-cover border-r border-b border-accent/20 transition-transform duration-300 hover:scale-110" />
         </div>
         <div class="p-4 md:p-5">
-          <h2 class="text-xl md:text-2xl font-normal tracking-widest mb-5 text-accent">EXOTIC SPORT</h2>
+          <h2 class="text-xl md:text-2xl font-normal tracking-widest mb-5 text-accent"><%=cat.getCategory_name() %></h2>
           <p class="text-xs md:text-sm leading-5 md:leading-6 text-gray-300 tracking-widest mb-6">
-            A perfect mix of style, agility, and power, delivering an exhilarating yet refined drive.
+            <%=cat.getCategory_description()!=null ? cat.getCategory_description():"No description found" %>
           </p>
           <button class="bg-accent/20 text-accent border-none py-2 md:py-2.5 px-6 md:px-8 text-xs md:text-sm tracking-widest rounded-full cursor-pointer transition-all duration-300 hover:bg-accent hover:text-primary">BROWSE</button>
         </div>
       </div>
-      <%
-      		}
-      	}else{
-      	%>
-      	<p>Error</p>
-      	<%
-      	}%>
-
-      <!-- Card 2 -->
-      <div class="bg-gradient-to-b from-primary to-gray-900 text-white border-l border-t border-accent/20 transition-all duration-300 hover:shadow-2xl hover:border-accent/50">
-        <div class="overflow-hidden relative h-48 md:h-64">
-          <img src="../images/sixth section images/2.jpg" alt="Exotic Car" class="w-full h-full object-cover border-r border-b border-accent/20 transition-transform duration-300 hover:scale-110" />
-        </div>
-        <div class="p-4 md:p-5">
-          <h2 class="text-xl md:text-2xl font-normal tracking-widest mb-5 text-accent">EXOTIC CARS</h2>
-          <p class="text-xs md:text-sm leading-5 md:leading-6 text-gray-300 tracking-widest mb-6">
-            Ultra-rare, high-performance masterpieces that combines luxury and innovation.
-          </p>
-          <button class="bg-accent/20 text-accent border-none py-2 md:py-2.5 px-6 md:px-8 text-xs md:text-sm tracking-widest rounded-full cursor-pointer transition-all duration-300 hover:bg-accent hover:text-primary">BROWSE</button>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="bg-gradient-to-b from-primary to-gray-900 text-white border-l border-t border-accent/20 transition-all duration-300 hover:shadow-2xl hover:border-accent/50">
-        <div class="overflow-hidden relative h-48 md:h-64">
-          <img src="../images/sixth section images/3.jpg" alt="Super Car" class="w-full h-full object-cover border-r border-b border-accent/20 transition-transform duration-300 hover:scale-110" />
-        </div>
-        <div class="p-4 md:p-5">
-          <h2 class="text-xl md:text-2xl font-normal tracking-widest mb-5 text-accent">SUPER CARS</h2>
-          <p class="text-xs md:text-sm leading-5 md:leading-6 text-gray-300 tracking-widest mb-6">
-            Blazing speed, cutting-edge aerodynamics, and track-ready performance in an elite package.
-          </p>
-          <button class="bg-accent/20 text-accent border-none py-2 md:py-2.5 px-6 md:px-8 text-xs md:text-sm tracking-widest rounded-full cursor-pointer transition-all duration-300 hover:bg-accent hover:text-primary">BROWSE</button>
-        </div>
-      </div>
+      <% 
+            }
+        } else {
+      %>
+      <p>Error: No categories found.</p>
+      <% 
+        }
+      %>
     </div>
-  </section>
+</section>
+
 
   <!-- Seventh Section -->
   <section class="h-[20vh] md:h-[30vh] bg-gradient-to-t from-primary to-gray-900 text-accent flex justify-center items-end border-t border-accent/20">
