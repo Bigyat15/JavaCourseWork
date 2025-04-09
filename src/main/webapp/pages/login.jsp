@@ -1,70 +1,212 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Motors - Login</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'dm-sans': ['DM Sans', 'sans-serif'],
+                        'space-grotesk': ['Space Grotesk', 'sans-serif'],
+                        'italiana': ['Italiana', 'serif'],
+                        'cinzel': ['Cinzel', 'serif'],
+                        'playfair': ['Playfair', 'serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'roboto-flex': ['Roboto Flex', 'sans-serif']
+                    },
+                    colors: {
+                        'luxury-gold': '#D4AF37',
+                        'carbon-black': '#1A1A1A',
+                        'racing-red': '#FF0000',
+                        'metallic-silver': '#C0C0C0',
+                        primary: '#1a1a1a',
+                        secondary: '#e5e5e5',
+                        accent: '#b8860b',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in',
+                        'slide-up': 'slideUp 1s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(100px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Grotesk:wght@300..700&family=Italiana&family=Cinzel:wght@400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/c3ca5c064a.js" crossorigin="anonymous"></script>
+
+    <style>
+        .elegant-border {
+            position: relative;
+        }
+        .elegant-border::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #b8860b;
+            transition: width 0.3s ease;
+        }
+        .elegant-border:hover::after {
+            width: 100%;
+        }
+        .input-focus:focus {
+            border-color: #b8860b;
+            box-shadow: 0 0 0 1px #b8860b;
+        }
+    </style>
 </head>
-<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-
-<body>
-<div class="bg-gray-50 font-[sans-serif]">
-      <div class="min-h-screen flex rounded flex-col items-center justify-center py-6 px-4">
-        <div class="max-w-md w-full">
-          
-          <div class="p-8 rounded-2xl bg-white shadow">
-            <h2 class="text-gray-800 text-center text-2xl font-bold">Sign in</h2>
-            
-            <form class="mt-8 space-y-4" method="POST" action="../login">
-             
-              <div>
-                <input class="hidden" name="next" value="{{request.GET.next}}">
-                <label class="text-gray-800 text-sm mb-2 block">Email</label>
-                <div class="relative flex items-center">
-                  <input name="email" type="email" required class="w-full form-control text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600" placeholder="Enter your email" />
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-4 h-4 absolute right-4" viewBox="0 0 24 24">
-                    <circle cx="10" cy="7" r="6" data-original="#000000"></circle>
-                    <path d="M14 15H6a5 5 0 0 0-5 5 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 5 5 0 0 0-5-5zm8-4h-2.59l.3-.29a1 1 0 0 0-1.42-1.42l-2 2a1 1 0 0 0 0 1.42l2 2a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42l-.3-.29H22a1 1 0 0 0 0-2z" data-original="#000000"></path>
-                  </svg>
-                </div>
-              </div>
-
-              <div>
-                <label class="text-gray-800 text-sm mb-2 block">Password</label>
-                <div class="relative flex items-center">
-                  <input name="password" type="password" required class="w-full form-control text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600" placeholder="Enter password" />
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-4 h-4 absolute right-4 cursor-pointer" viewBox="0 0 128 128">
-                    <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
-                  </svg>
-                </div>
-              </div>
-
-              <div class="flex flex-wrap items-center justify-between gap-4">
-                <div class="flex items-center">
-                  <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
-                  <label for="remember-me" class="ml-3 block text-sm text-gray-800">
-                    Remember me
-                  </label>
-                </div>
-                <div class="text-sm">
-                  <a href="#" class="text-blue-600 hover:underline font-semibold">
-                    Forgot your password?
-                  </a>
-                </div>
-              </div>
-
-              <div class="!mt-8">
-                <button type="submit" class="w-full py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
-                  Sign in
-                </button>
-              </div>
-              <p class="text-gray-800 text-sm !mt-8 text-center">Don't have an account? <a href="#" class="text-blue-600 hover:underline ml-1 whitespace-nowrap font-semibold">Register here</a></p>
-            </form>
-          </div>
-        </div>
-      </div>
+<body class="bg-primary min-h-screen">
+    <!-- Background Video -->
+    <div class="fixed inset-0 w-full h-full overflow-hidden -z-10">
+        <video autoplay loop muted class="absolute top-0 left-0 w-full h-full object-cover">
+            <source src="/CollegeTutorial/vedios/new2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/90 to-primary/40"></div>
     </div>
 
+    <!-- Main Content -->
+    <div class="min-h-screen flex items-center justify-center px-4 py-12">
+        <div class="max-w-md w-full space-y-8 bg-primary/80 backdrop-blur-sm p-8 rounded-2xl border border-accent/20 shadow-2xl animate-fade-in">
+            <!-- Logo -->
+            <div class="text-center">
+                <img src="/CollegeTutorial/images/aurelia white.png" alt="Luxury Motors Logo" class="mx-auto h-24 md:h-32">
+                <h2 class="mt-6 text-3xl font-italiana text-accent tracking-widest">Welcome Back</h2>
+                <p class="mt-2 text-sm text-gray-300">Enter your credentials to access your account</p>
+            </div>
+
+            <!-- Login Form -->
+            <form class="mt-8 space-y-6" action="../login" method="POST">
+                <div class="rounded-md shadow-sm space-y-4">
+                    <!-- Email Input -->
+                    <div>
+                        <label for="email" class="sr-only">Email address</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-envelope text-accent"></i>
+                            </div>
+                            <input id="email" name="email" type="email" required 
+                                class="appearance-none rounded-lg relative block w-full px-3 py-3 pl-10 border border-accent/20 bg-primary/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 sm:text-sm input-focus"
+                                placeholder="Email address">
+                        </div>
+                    </div>
+
+                    <!-- Password Input -->
+                    <div>
+                        <label for="password" class="sr-only">Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-accent"></i>
+                            </div>
+                            <input id="password" name="password" type="password" required 
+                                class="appearance-none rounded-lg relative block w-full px-3 py-3 pl-10 border border-accent/20 bg-primary/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 sm:text-sm input-focus"
+                                placeholder="Password">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input id="remember-me" name="remember-me" type="checkbox" 
+                            class="h-4 w-4 text-accent focus:ring-accent border-accent/20 rounded bg-primary/50">
+                        <label for="remember-me" class="ml-2 block text-sm text-gray-300">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div class="text-sm">
+                        <a href="#" class="font-medium text-accent hover:text-white transition-colors duration-300 elegant-border">
+                            Forgot your password?
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div>
+                    <button type="submit" 
+                        class="group relative w-full flex justify-center py-3 px-4 border border-accent/50 text-sm font-medium rounded-lg text-primary bg-accent hover:bg-accent/80 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-all duration-300">
+                        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                            <i class="fas fa-sign-in-alt text-primary group-hover:text-white transition-colors duration-300"></i>
+                        </span>
+                        Sign in
+                    </button>
+                </div>
+            </form>
+
+            <!-- Register Link -->
+            <div class="text-center mt-6">
+                <p class="text-sm text-gray-300">
+                    Don't have an account?
+                    <a href="#" class="font-medium text-accent hover:text-white transition-colors duration-300 elegant-border">
+                        Register now
+                    </a>
+                </p>
+            </div>
+
+            <!-- Social Login -->
+            <div class="mt-6">
+                <div class="relative">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-accent/20"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-primary/80 text-gray-300">Or continue with</span>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid grid-cols-3 gap-3">
+                    <div>
+                        <a href="#" class="w-full inline-flex justify-center py-2 px-4 border border-accent/20 rounded-lg shadow-sm bg-primary/50 text-sm font-medium text-gray-300 hover:bg-accent/20 hover:text-accent transition-all duration-300">
+                            <i class="fab fa-google text-accent"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#" class="w-full inline-flex justify-center py-2 px-4 border border-accent/20 rounded-lg shadow-sm bg-primary/50 text-sm font-medium text-gray-300 hover:bg-accent/20 hover:text-accent transition-all duration-300">
+                            <i class="fab fa-facebook-f text-accent"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#" class="w-full inline-flex justify-center py-2 px-4 border border-accent/20 rounded-lg shadow-sm bg-primary/50 text-sm font-medium text-gray-300 hover:bg-accent/20 hover:text-accent transition-all duration-300">
+                            <i class="fab fa-apple text-accent"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Home -->
+    <a href="http://localhost:8080/CollegeTutorial/car" class="fixed bottom-8 right-8 text-accent hover:text-white transition-colors duration-300">
+        <i class="fas fa-arrow-left text-2xl"></i>
+    </a>
 </body>
 </html>

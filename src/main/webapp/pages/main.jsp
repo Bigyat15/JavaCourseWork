@@ -75,6 +75,12 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+  <!-- Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
   <!-- Custom CSS -->
   <style>
     .hamburger.active span:nth-child(1) {
@@ -244,7 +250,7 @@
      <img src="/CollegeTutorial/images/toyota.png" alt="toyota logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
-        <img src="/CollegeTutorial/images/mclaren.png" alt="mclaren logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
+       <img src="/CollegeTutorial/images/mclaren.png" alt="mclaren logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
       </div>
       <div class="inline-flex items-center justify-center text-lg md:text-2xl lg:text-3xl text-primary font-italiana tracking-widest font-semibold">
          <img src="/CollegeTutorial/images/porsche.png" alt="porsche logo" class="h-12 md:h-16 lg:h-20 mx-8 md:mx-12">
@@ -311,7 +317,7 @@
   <!-- Fourth Section -->
   <section class="relative h-screen overflow-hidden px-4 md:px-10 pb-10 flex items-center justify-center z-10 bg-primary">
     <video autoplay muted loop playsinline class="absolute top-0 left-0 md:left-[5%] w-full md:w-[90%] h-full object-cover -z-10 pointer-events-none">
-      <source src="/CollegeTutorial/vedios/KOENIGSEGG Jesko Absolut.mp4" type="video/mp4" />
+      <source src="/CollegeTutorial/vedios/Lamborghini Revuelto – From Now On (1).mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-primary/90 to-primary/40 z-0"></div>
@@ -365,7 +371,163 @@
   <!-- Seventh Section -->
   <section class="h-[20vh] md:h-[30vh] bg-gradient-to-t from-primary to-gray-900 text-accent flex justify-center items-end border-t border-accent/20">
     <div class="mb-5 text-center font-dm-sans">
-      <h1 class="text-4xl md:text-5xl lg:text-7xl font-light tracking-widest font-italiana">LUXURY MOTORS</h1>
+      <h1 class="text-4xl md:text-5xl lg:text-7xl font-light tracking-widest font-italiana">LUXURY MOTORS<br>Showroom Location</h1>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="min-h-screen bg-primary relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 bg-[url('/CollegeTutorial/images/pattern.png')] opacity-5 z-0"></div>
+    
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/50 to-primary/90 z-10"></div>
+    
+    <!-- Content -->
+    <div class="relative z-20 max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20">
+      <!-- Section Header -->
+      <div class="text-center mb-12 md:mb-20">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-italiana text-accent tracking-widest mb-4">Discover Our Showrooms</h2>
+        <p class="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto">Experience luxury at its finest in our exclusive showrooms across the United States</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+        <!-- Map Container -->
+        <div class="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] rounded-2xl overflow-hidden shadow-2xl border border-accent/20 group hover:border-accent/50 transition-all duration-300">
+          <div id="map" class="w-full h-full"></div>
+          <!-- Map Overlay Effect -->
+          <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent pointer-events-none"></div>
+        </div>
+        
+        <!-- Location Information -->
+        <div class="text-white space-y-8">
+          <!-- Location Cards Container -->
+          <div class="space-y-6 md:space-y-8">
+            <!-- New York Showroom -->
+            <div class="location-card bg-primary/50 p-6 md:p-8 rounded-2xl border border-accent/20 hover:border-accent/50 transition-all duration-300 cursor-pointer group hover:shadow-2xl hover:shadow-accent/10">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h3 class="text-xl md:text-2xl font-cinzel text-accent mb-3 group-hover:text-white transition-colors duration-300">New York Showroom</h3>
+                  <p class="text-gray-300 mb-2 flex items-center">
+                    <i class="fas fa-map-marker-alt text-accent mr-2"></i>
+                    123 Luxury Avenue, Manhattan, NY 10001
+                  </p>
+                  <p class="text-gray-300 mb-2 flex items-center">
+                    <i class="fas fa-phone text-accent mr-2"></i>
+                    +1 (212) 555-0123
+                  </p>
+                  <p class="text-gray-300 mb-4 flex items-center">
+                    <i class="fas fa-clock text-accent mr-2"></i>
+                    Open: Mon-Sat 9:00 AM - 8:00 PM
+                  </p>
+                </div>
+                <div class="text-accent text-2xl group-hover:scale-110 transition-transform duration-300">
+                  <i class="fas fa-chevron-right"></i>
+                </div>
+              </div>
+              <div class="border-t border-accent/20 pt-4">
+                <h4 class="text-sm font-semibold text-accent mb-3">Features:</h4>
+                <ul class="grid grid-cols-2 gap-2 text-xs text-gray-300">
+                  <li class="flex items-center">
+                    <i class="fas fa-star text-accent mr-2"></i>
+                    Exclusive Showroom
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fas fa-car text-accent mr-2"></i>
+                    Test Drive Center
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fas fa-couch text-accent mr-2"></i>
+                    VIP Lounge
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Los Angeles Showroom -->
+            <div class="location-card bg-primary/50 p-6 md:p-8 rounded-2xl border border-accent/20 hover:border-accent/50 transition-all duration-300 cursor-pointer group hover:shadow-2xl hover:shadow-accent/10">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h3 class="text-xl md:text-2xl font-cinzel text-accent mb-3 group-hover:text-white transition-colors duration-300">Los Angeles Showroom</h3>
+                  <p class="text-gray-300 mb-2 flex items-center">
+                    <i class="fas fa-map-marker-alt text-accent mr-2"></i>
+                    456 Prestige Boulevard, Beverly Hills, CA 90210
+                  </p>
+                  <p class="text-gray-300 mb-2 flex items-center">
+                    <i class="fas fa-phone text-accent mr-2"></i>
+                    +1 (310) 555-0123
+                  </p>
+                  <p class="text-gray-300 mb-4 flex items-center">
+                    <i class="fas fa-clock text-accent mr-2"></i>
+                    Open: Mon-Sat 9:00 AM - 8:00 PM
+                  </p>
+                </div>
+                <div class="text-accent text-2xl group-hover:scale-110 transition-transform duration-300">
+                  <i class="fas fa-chevron-right"></i>
+                </div>
+              </div>
+              <div class="border-t border-accent/20 pt-4">
+                <h4 class="text-sm font-semibold text-accent mb-3">Features:</h4>
+                <ul class="grid grid-cols-2 gap-2 text-xs text-gray-300">
+                  <li class="flex items-center">
+                    <i class="fas fa-paint-brush text-accent mr-2"></i>
+                    Customization Center
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fas fa-door-open text-accent mr-2"></i>
+                    Private Viewing Rooms
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fas fa-couch text-accent mr-2"></i>
+                    Luxury Lounge
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Miami Showroom -->
+            <div class="location-card bg-primary/50 p-6 md:p-8 rounded-2xl border border-accent/20 hover:border-accent/50 transition-all duration-300 cursor-pointer group hover:shadow-2xl hover:shadow-accent/10">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h3 class="text-xl md:text-2xl font-cinzel text-accent mb-3 group-hover:text-white transition-colors duration-300">Miami Showroom</h3>
+                  <p class="text-gray-300 mb-2 flex items-center">
+                    <i class="fas fa-map-marker-alt text-accent mr-2"></i>
+                    789 Ocean Drive, Miami Beach, FL 33139
+                  </p>
+                  <p class="text-gray-300 mb-2 flex items-center">
+                    <i class="fas fa-phone text-accent mr-2"></i>
+                    +1 (305) 555-0123
+                  </p>
+                  <p class="text-gray-300 mb-4 flex items-center">
+                    <i class="fas fa-clock text-accent mr-2"></i>
+                    Open: Mon-Sat 9:00 AM - 8:00 PM
+                  </p>
+                </div>
+                <div class="text-accent text-2xl group-hover:scale-110 transition-transform duration-300">
+                  <i class="fas fa-chevron-right"></i>
+                </div>
+              </div>
+              <div class="border-t border-accent/20 pt-4">
+                <h4 class="text-sm font-semibold text-accent mb-3">Features:</h4>
+                <ul class="grid grid-cols-2 gap-2 text-xs text-gray-300">
+                  <li class="flex items-center">
+                    <i class="fas fa-umbrella-beach text-accent mr-2"></i>
+                    Beachfront Location
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fas fa-ship text-accent mr-2"></i>
+                    Yacht Club Access
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fas fa-calendar-star text-accent mr-2"></i>
+                    VIP Events
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -417,6 +579,7 @@
   </footer>
 
   <!-- JavaScript -->
-  <script src="../js/main.js"></script>
+  <script src="/CollegeTutorial/js/main.js"></script>
+  <script src="/CollegeTutorial/js/map.js"></script>
 </body>
 </html> 
