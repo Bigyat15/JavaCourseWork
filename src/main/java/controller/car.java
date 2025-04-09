@@ -44,7 +44,7 @@ public class car extends HttpServlet {
 			System.out.println("Car: " + car.getCar_brand());
 		}
 		request.setAttribute("carList", carList);
-		request.getRequestDispatcher("/pages/carList.jsp").forward(request,response);
+		request.getRequestDispatcher("/pages/main.jsp").forward(request,response);
 	}
 
 	/**

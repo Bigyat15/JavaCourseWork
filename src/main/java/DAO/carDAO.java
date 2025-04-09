@@ -39,10 +39,13 @@ public class carDAO {
                 String colorName = rs.getString("color_name");
                 int carImagesID = rs.getInt("car_images_id");
                 String carImagesPath = rs.getString("car_images_path");
+                int categoryID = rs.getInt("category_id");
+                String categoryName = rs.getString("category_name");
+                String categoryImagePath = rs.getString("category_image_path");
 
                 carModel car = new carModel(
-                    carName, carDescription, carQuantity, carPrice, carBrand, carYear, carModelNumber,colorsID,colorName,carImagesID,carImagesPath
-                );
+                    carName, carDescription, carQuantity, carPrice, carBrand, carYear, carModelNumber,colorsID,colorName,carImagesID,carImagesPath,categoryID,categoryName,categoryImagePath
+                 );
 
                 carList.add(car);
             }
@@ -52,4 +55,18 @@ public class carDAO {
 
         return carList;
     }
+//	public ArrayList<carModel> getAllCategory(){
+//		ArrayList<carModel> categoryList = new ArrayList<>();
+//		String query = "Select * from category";
+//		try(Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(query)){
+//			while(rs.next()) {
+//				int categoryID = rs.getInt("category_id");
+//				String categoryName = rs.getString("category_name");
+//				String categoryImagePath = rs.getString("category_image_path");
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 }

@@ -2,49 +2,46 @@
 const hamburger = document.getElementById('hamburger');
 const sideMenu = document.getElementById('sideMenu');
 const overlay = document.getElementById('overlay');
-const dropdownToggle = document.querySelectorAll('.dropdown-toggle');
+const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
-// Toggle the hamburger and side menu on click
+// Toggle mobile menu
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
   sideMenu.classList.toggle('open');
   overlay.classList.toggle('hidden');
+  document.body.classList.toggle('overflow-hidden');
 });
 
-// Close the side menu and hamburger when clicking the overlay
+// Close menu when clicking overlay
 overlay.addEventListener('click', () => {
   hamburger.classList.remove('active');
   sideMenu.classList.remove('open');
   overlay.classList.add('hidden');
+  document.body.classList.remove('overflow-hidden');
 });
 
-// Dropdown toggle on click (for mobile compatibility)
-dropdownToggle.forEach((toggle) => {
-  toggle.addEventListener('click', function (e) {
-    e.preventDefault();
-    const dropdownMenu = this.nextElementSibling;
-    dropdownMenu.classList.toggle('hidden');
-    this.querySelector('i').classList.toggle('rotate-180');
+// Dropdown functionality
+dropdownToggles.forEach(toggle => {
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default link behavior
+    e.stopPropagation(); // Stop event from bubbling up
+    const dropdown = toggle.nextElementSibling;
+    const arrow = toggle.querySelector('i');
+    
+    dropdown.classList.toggle('hidden');
+    arrow.classList.toggle('rotate-180');
   });
 });
 
-// Close dropdown if it's open when clicking outside
-document.addEventListener('click', (event) => {
-  if (!event.target.closest('.dropdown')) {
-    document.querySelectorAll('.dropdown-menu').forEach((menu) => {
-      menu.classList.add('hidden');
-    });
-    document.querySelectorAll('.dropdown-toggle i').forEach((icon) => {
-      icon.classList.remove('rotate-180');
-    });
-  }
-});
-
-// Smooth scrolling
+// Smooth scrolling with Lenis
 const lenis = new Lenis({
-  duration: 0.8,
-  easing: (t) => Math.sin((t * Math.PI) / 2),
-  smooth: true
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  direction: 'vertical',
+  gestureDirection: 'vertical',
+  smooth: true,
+  smoothTouch: false,
+  touchMultiplier: 2,
 });
 
 function raf(time) {
@@ -53,3 +50,17 @@ function raf(time) {
 }
 
 requestAnimationFrame(raf);
+
+// Close menu when clicking outside the menu
+document.addEventListener('click', (e) => {
+  // Check if the click is outside both the side menu and hamburger
+  // Also check if the click is not on a dropdown menu item
+  if (!sideMenu.contains(e.target) && 
+      !hamburger.contains(e.target) && 
+      !e.target.closest('.dropdown-menu')) {
+    hamburger.classList.remove('active');
+    sideMenu.classList.remove('open');
+    overlay.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+  }
+}); 

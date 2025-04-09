@@ -12,8 +12,11 @@ public class carModel {
 	private String color_name;
 	private Integer car_images_id;
 	private String car_images_path;
+	private Integer category_id;
+	private String category_name;
+	private String category_image_path;
 	public carModel(String car_name, String car_description, Integer car_quantity, Double car_price, String car_brand,
-			Integer car_year, Integer car_model,Integer colors_id,String color_name,Integer car_images_id,String car_images_path) {
+			Integer car_year, Integer car_model,Integer colors_id,String color_name,Integer car_images_id,String car_images_path,Integer category_id,String category_name,String category_image_path) {
 		super();
 		this.car_name = car_name;
 		this.car_description = car_description;
@@ -26,6 +29,9 @@ public class carModel {
 		this.color_name=color_name;
 		this.car_images_id = car_images_id;
 		this.car_images_path=car_images_path;
+		this.category_id=category_id;
+		this.category_name=category_name;
+		this.category_image_path=category_image_path;
 	}
 	public String getCar_name() {
 		return car_name;
@@ -93,7 +99,23 @@ public class carModel {
 	public void setCar_images_path(String car_images_path) {
 		this.car_images_path = car_images_path;
 	}
-	
-	
+	public Integer getCategory_id() {
+		return category_id;
+	}
+	public void setCategory_id(Integer category_id) {
+		this.category_id = category_id;
+	}
+	public String getCategory_name() {
+		return category_name;
+	}
+	public void setCategory_name(String category_name) {
+		this.category_name = category_name;
+	}
+	public String getCategory_image_path() {
+		return category_image_path;
+	}
+	public void setCategory_image_path(String category_image_path) {
+		this.category_image_path = category_image_path;
+	}
 	
 }
