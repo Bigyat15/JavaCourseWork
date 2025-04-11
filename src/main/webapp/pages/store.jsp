@@ -121,7 +121,7 @@
                     for(int i = 0; i < imagePaths.length; i++){
                     	String imagePath = imagePaths[i].trim();
                     %>
-                        <div class="thumbnail <%= i == 0 ? "image" :"" %>" data-image="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/models_gw/images-s/2023/03_29/gate_family_s_01_m.jpg">
+                        <div class="thumbnail <%= i == 0 ? "active" :"" %>" data-image="<%= imagePath %>">
                             <img src="<%=imagePath %>" 
                                  alt="Front View" 
                                  class="w-full h-24 object-cover rounded-lg">
