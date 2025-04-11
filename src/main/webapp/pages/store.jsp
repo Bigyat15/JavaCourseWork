@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="models.carModel" %>
+<%@ page import="models.productModel" %>
 <%
-	ArrayList<String> carList = (ArrayList<String>) request.getAttribute("carList");
-	if(carList != null && !carList.isEmpty()){
-		for( carModel cl: carList ){
-			
-		
+	ArrayList<productModel> productList = (ArrayList<productModel>) request.getAttribute("productList");
+	if(productList != null && !productList.isEmpty()){
+		for( productModel cl : productList ){
 %>
 <!DOCTYPE html>
 <html>
@@ -113,31 +111,24 @@
                 <!-- Product Gallery -->
                 <div class="product-gallery">
                     <div class="mb-4">
-                        <img id="mainImage" src="<%=cl.getCar_images_id()%>" 
+                        <img id="mainImage" src="<%=cl.getCar_images_path()%>" 
                              alt="Lamborghini Aventador SVJ" 
                              class="w-full h-auto rounded-lg main-image">
                     </div>
                     <div class="grid grid-cols-4 gap-4">
-                        <div class="thumbnail active" data-image="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/models_gw/images-s/2023/03_29/gate_family_s_01_m.jpg">
-                            <img src="" 
+                    <%
+                    String[] imagePaths = cl.getCar_images_path().split(",");
+                    for(int i = 0; i < imagePaths.length; i++){
+                    	String imagePath = imagePaths[i].trim();
+                    %>
+                        <div class="thumbnail <%= i == 0 ? "image" :"" %>" data-image="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/models_gw/images-s/2023/03_29/gate_family_s_01_m.jpg">
+                            <img src="<%=imagePath %>" 
                                  alt="Front View" 
                                  class="w-full h-24 object-cover rounded-lg">
                         </div>
-                        <div class="thumbnail" data-image="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/models_gw/images-s/2023/03_29/gate_family_s_04_m.jpg">
-                            <img src="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/models_gw/images-s/2023/03_29/gate_family_s_04_m.jpg" 
-                                 alt="Side View" 
-                                 class="w-full h-24 object-cover rounded-lg">
-                        </div>
-                        <div class="thumbnail" data-image="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/models_gw/images-s/2023/03_29/gate_family_s_05_m.jpg">
-                            <img src="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/models_gw/images-s/2023/03_29/gate_family_s_05_m.jpg" 
-                                 alt="Rear View" 
-                                 class="w-full h-24 object-cover rounded-lg">
-                        </div>
-                        <div class="thumbnail" data-image="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/models_gw/images-s/2023/03_29/gate_family_s_06_m.jpg">
-                            <img src="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/models_gw/images-s/2023/03_29/gate_family_s_06_m.jpg" 
-                                 alt="Interior View" 
-                                 class="w-full h-24 object-cover rounded-lg">
-                        </div>
+                      <%  }
+                    %>
+                        
                     </div>
                 </div>
 
