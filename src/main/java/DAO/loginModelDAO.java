@@ -19,13 +19,13 @@ public class loginModelDAO {
 			e.printStackTrace();
 		}
 	}
-	public boolean loginAttempt(loginModel login) throws SQLException {
-		boolean checked = false;
+	public loginModel loginAttempt(loginModel login) throws SQLException {
+		
 		if(con==null) {
 			System.out.println("Connection failed successfully....");
-			return checked;
+			return null;
 		}
-		String query = "Select password FROM User WHERE email=?";
+		String query = "Select password,is_admin FROM User WHERE email=?";
 		try(PreparedStatement ps = con.prepareStatement(query)){
 			ps.setNString(1, login.getEmail());
 			
@@ -33,18 +33,19 @@ public class loginModelDAO {
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
 				String encryptedPassword = rs.getString("password");
+				boolean is_admin = rs.getBoolean("is_admin");
 				EncryptDecrypt ed = new EncryptDecrypt();
 				String decryptedPassword = ed.encrypt(login.getPassword());
 				
 				if(decryptedPassword != null && decryptedPassword.equals(encryptedPassword)) {
-					checked = true;
+					return new loginModel(login.getEmail(), login.getPassword(), is_admin);
 				}
 			}
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		return checked;
+		return null;
 		
 	}
 	

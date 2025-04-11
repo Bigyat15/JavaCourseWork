@@ -56,6 +56,7 @@ public class car extends HttpServlet {
 		    System.out.println("Category Description: " + cat.getCategory_description());
 		}
 
+	
 		request.setAttribute("carList", carList);
 		request.getRequestDispatcher("/pages/main.jsp").forward(request,response);
 		

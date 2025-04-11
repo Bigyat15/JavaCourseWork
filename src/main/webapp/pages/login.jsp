@@ -230,7 +230,7 @@
             <div class="text-center mt-6">
                 <p class="text-sm text-gray-300">
                     Don't have an account?
-                    <a href="#" class="font-medium text-accent hover:text-white transition-colors duration-300">
+                    <a href="${pageContext.request.contextPath}/register" class="font-medium text-accent hover:text-white transition-colors duration-300">
                         Register now
                     </a>
                 </p>

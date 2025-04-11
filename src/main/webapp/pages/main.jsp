@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="models.categoryModel" %>
@@ -197,7 +197,7 @@
           <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">VISIT US</a>
           <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">CONTACT US</a>
           <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">AURELIA STORE</a>
-          <a href="http://localhost:8080/CollegeTutorial/login" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">SIGN IN</a>
+          <a href="${pageContext.request.contextPath}/login" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">SIGN IN</a>
           <a href="${pageContext.request.contextPath}/register" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">REGISTER</a>
           <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">HISTORY</a>
         </nav>

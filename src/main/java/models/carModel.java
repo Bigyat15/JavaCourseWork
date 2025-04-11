@@ -15,6 +15,7 @@ public class carModel {
 	private Integer category_id;
 	private String category_name;
 	private String category_image_path;
+
 	public carModel(String car_name, String car_description, Integer car_quantity, Double car_price, String car_brand,
 			Integer car_year, Integer car_model,Integer colors_id,String color_name,Integer car_images_id,String car_images_path,Integer category_id,String category_name,String category_image_path) {
 		super();

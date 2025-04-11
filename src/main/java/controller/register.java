@@ -93,9 +93,9 @@ public class register extends HttpServlet {
 	    try {
 	        boolean success = dao.addRegistrationDetail(register);
 	        if (success) {
-	            response.sendRedirect("register.jsp?success=true");
+	            response.sendRedirect(request.getContextPath()+"/pages/login.jsp");
 	        } else {
-	            response.sendRedirect("register.jsp?error=registrationFailed");
+	            response.sendRedirect(request.getContextPath()+"/pages/register.jsp?error=registrationFailed");
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();

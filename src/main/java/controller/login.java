@@ -54,20 +54,26 @@ public class login extends HttpServlet {
 			return;
 		}
 		
-		loginModel login = new loginModel(email,password);
+		
 		try {
-			boolean success = dao.loginAttempt(login);
-			if(success) {
-				response.sendRedirect(request.getContextPath() +"/pages/main.jsp");
-				return;
+			loginModel login = new loginModel(email,password, false);
+			loginModel result = dao.loginAttempt(login);
+			if(result != null) {
+				if(result.isIs_admin()) {
+					response.sendRedirect(request.getContextPath() +"/pages/adminDashboard.jsp");
+					return;
+				}else {
+					response.sendRedirect(request.getContextPath() +"/pages/main.jsp");
+					return;
+				}
+				
 			}else {
 				response.sendRedirect(request.getContextPath() +"/pages/login.jsp?error=failed");
-				return;
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 			response.sendRedirect(request.getContextPath() +"/pages/login.jsp?status=DatabaseError");
-			return;
+			
 		}
 	}
 
