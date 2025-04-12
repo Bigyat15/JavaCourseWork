@@ -9,15 +9,15 @@ public class productModel {
 	private String car_brand;
 	private Integer car_year;
 	private Integer car_model;
-	private Integer colors_id;
-	private String colors_name;
+
 	private Integer category_id;
 	private String category_name;
-	public productModel( String car_name, String car_description, Integer car_quantity, double car_price,
-			String car_brand, Integer car_year, Integer car_model, Integer colors_id, String colors_name,
-			Integer category_id, String category_name) {
+	private String store_images;
+	public productModel(String car_name, String car_description, Integer car_quantity, double car_price,
+			String car_brand, Integer car_year, Integer car_model, 
+			Integer category_id, String category_name,String store_images) {
 		super();
-	
+		
 		this.car_name = car_name;
 		this.car_description = car_description;
 		this.car_quantity = car_quantity;
@@ -25,10 +25,10 @@ public class productModel {
 		this.car_brand = car_brand;
 		this.car_year = car_year;
 		this.car_model = car_model;
-		this.colors_id = colors_id;
-		this.colors_name = colors_name;
+		
 		this.category_id = category_id;
 		this.category_name = category_name;
+		this.store_images = store_images;
 	}
 	
 	public String getCar_name() {
@@ -73,18 +73,7 @@ public class productModel {
 	public void setCar_model(Integer car_model) {
 		this.car_model = car_model;
 	}
-	public Integer getColors_id() {
-		return colors_id;
-	}
-	public void setColors_id(Integer colors_id) {
-		this.colors_id = colors_id;
-	}
-	public String getColors_name() {
-		return colors_name;
-	}
-	public void setColors_name(String colors_name) {
-		this.colors_name = colors_name;
-	}
+	
 	public Integer getCategory_id() {
 		return category_id;
 	}
@@ -97,6 +86,16 @@ public class productModel {
 	public void setCategory_name(String category_name) {
 		this.category_name = category_name;
 	}
+
+	
+	public String getStore_images() {
+		return store_images;
+	}
+
+	public void setStore_images(String store_images) {
+		this.store_images = store_images;
+	}
+	
 	
 	
 	

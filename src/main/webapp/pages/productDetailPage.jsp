@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="models.productImageModel" %>
+<%@page import="models.productModel" %>
+<%@page import="models.colorModel" %>
 
 <!DOCTYPE html>
 <html>
@@ -119,54 +121,97 @@
 
                 <!-- Product Information -->
                 <div>
+                 <% 
+                        
+                        if(imageList != null && !imageList.isEmpty()){
+                            productImageModel firstImage = imageList.get(0); 
+                        %>
                     <div class="mb-8">
-                        <h1 class="text-4xl font-bold mb-4">Lamborghini Aventador SVJ</h1>
+                    
+                        <h1 class="text-4xl font-bold mb-4"><%=firstImage.getCar_name() %></h1>
                         <div class="flex items-center space-x-4 mb-4">
-                            <span class="text-2xl font-bold text-lambo-yellow">$500,000</span>
+                            <span class="text-2xl font-bold text-lambo-yellow">$<%=firstImage.getCar_price() %></span>
                             <span class="text-gray-400">Starting Price</span>
                         </div>
-                        <p class="text-gray-400 mb-6">The Aventador SVJ represents the purest essence of a Lamborghini super sports car. With its naturally aspirated V12 engine and innovative aerodynamics, it delivers an unparalleled driving experience.</p>
+                        <p class="text-gray-400 mb-6"><%=firstImage.getCar_description() %></p>
                     </div>
-
+					
                     <!-- Category -->
                     <div class="mb-8">
+                    
                         <h3 class="text-xl font-bold mb-4">Category</h3>
                         <div class="flex space-x-4">
-                            <span class="px-4 py-2 bg-lambo-gray rounded-full text-sm">Super Sports Car</span>
-                            <span class="px-4 py-2 bg-lambo-gray rounded-full text-sm">Limited Edition</span>
-                            <span class="px-4 py-2 bg-lambo-gray rounded-full text-sm">V12</span>
+                        
+                        	
+                        
+                            <span class="px-4 py-2 bg-lambo-gray rounded-full text-sm"><%=firstImage.getCategory_name() %></span>
                         </div>
+                        <% 
+                        	
+					}else{
+					%>
+					<p>No category</p>
+					<%
+					}%>
                     </div>
-
+					<%
+						ArrayList<colorModel> colorList = (ArrayList<colorModel>) request.getAttribute("colorList");
+						if(colorList != null && !colorList.isEmpty()){
+							colorModel colors = colorList.get(0);
+						
+					%>
                     <!-- Color Options -->
                     <div class="mb-8">
                         <h3 class="text-xl font-bold mb-4">Available Colors</h3>
                         <div class="flex space-x-4">
-                            <div class="color-option active bg-red-600" title="Rosso Mars"></div>
-                            <div class="color-option bg-yellow-400" title="Giallo Inti"></div>
-                            <div class="color-option bg-blue-600" title="Blu Caelum"></div>
-                            <div class="color-option bg-black" title="Nero Noctis"></div>
-                            <div class="color-option bg-white" title="Bianco Isis"></div>
+                        <%
+                        for (colorModel cm : colorList) {
+                            String[] colorLists = cm.getColor_name().split(",");
+                            for (int i = 0; i < colorLists.length; i++) {
+                                String colorName = colorLists[i].trim();
+                        %>
+                            <div class="color-option <%=colorName %>" title="Rosso Mars"></div>
+                            <%
+                            }
+                        }%>
                         </div>
                     </div>
-
+				<%
+				
+				}else{
+				%>
+				<p>Not foound</p>
+				<%}
+				%>
                     <!-- Key Specifications -->
+                   
                     <div class="mb-8">
+                     
                         <h3 class="text-xl font-bold mb-4">Key Specifications</h3>
+                        <% 
+                        
+                        if(imageList != null && !imageList.isEmpty()){
+                            productImageModel firstImage = imageList.get(0); 
+                        %>
                         <div class="space-y-4">
                             <div class="specs-item">
                                 <h4 class="text-lg font-semibold">Engine</h4>
-                                <p class="text-gray-400">V12, 6.5 L, 770 HP @ 8,500 rpm</p>
+                                <p class="text-gray-400"><%=firstImage.getEngine_type() %></p>
                             </div>
                             <div class="specs-item">
                                 <h4 class="text-lg font-semibold">Performance</h4>
-                                <p class="text-gray-400">0-100 km/h in 2.9s, Top Speed 350 km/h</p>
+                                <p class="text-gray-400"><%=firstImage.getPerformance() %></p>
                             </div>
                             <div class="specs-item">
                                 <h4 class="text-lg font-semibold">Transmission</h4>
-                                <p class="text-gray-400">7-speed ISR automated manual</p>
+                                <p class="text-gray-400"><%=firstImage.getTransmission() %></p>
                             </div>
                         </div>
+                        <% }else{
+					%>
+					<p>No category</p>
+					<%
+					}%>
                     </div>
 
                     <!-- Action Buttons -->

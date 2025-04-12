@@ -83,33 +83,7 @@
 
   <!-- Custom CSS -->
   <style>
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(7px, -6px);
-    }
-    #sideMenu {
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
-    }
-    #sideMenu.open {
-      transform: translateX(0);
-    }
-    .rotate-180 {
-      transform: rotate(180deg);
-    }
-    .dropdown-menu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-in-out;
-    }
-    .dropdown-menu:not(.hidden) {
-      max-height: 500px;
-    }
+    
     .elegant-border {
       position: relative;
     }
@@ -120,7 +94,7 @@
       left: 0;
       width: 0;
       height: 1px;
-      background: #b8860b;
+      background: #b8860b; 
       transition: width 0.3s ease;
     }
     .elegant-border:hover::after {
@@ -152,66 +126,7 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 w-full z-30 flex items-center justify-end p-4 bg-transparent">
-      <div class="absolute left-1/2 -translate-x-1/2">
-        <img src="/CollegeTutorial/images/aurelia white.png" alt="Logo" class="h-24 md:h-32 lg:h-36">
-      </div>
-      <div id="hamburger" class="hamburger w-8 h-6 relative cursor-pointer transition-all duration-300 z-40 group">
-        <span class="absolute h-0.5 w-full bg-accent left-0 rounded transition-all duration-300 group-hover:bg-white"></span>
-        <span class="absolute h-0.5 w-full bg-accent left-0 top-2 rounded transition-all duration-300 group-hover:bg-white"></span>
-        <span class="absolute h-0.5 w-full bg-accent left-0 top-4 rounded transition-all duration-300 group-hover:bg-white"></span>
-      </div>
-    </nav>
-
-    <!-- Side Menu -->
-    <div id="sideMenu" class="fixed top-0 right-0 w-64 md:w-80 h-full bg-primary/95 transform translate-x-full transition-transform duration-300 ease-in-out z-50 border-l border-accent/20">
-      <div class="p-6">
-        <!-- Side Menu Logo -->
-        <div class="mb-8">
-          <img src="/CollegeTutorial/images/aurelia white.png" alt="Logo" class="h-24 md:h-32">
-        </div>
-
-        <!-- Navigation Links -->
-        <nav class="space-y-4">
-          <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">HOME</a>
-
-          <!-- Dropdown Menu -->
-          <div class="dropdown">
-            <a href="#" class="dropdown-toggle text-white text-lg hover:text-accent transition-colors duration-300 flex items-center justify-between elegant-border">
-              CARS
-              <i class="fas fa-chevron-down ml-2 text-sm"></i>
-            </a>
-            <div class="dropdown-menu hidden pl-4 mt-2 space-y-2">
-              <a href="#" class="block text-gray-300 hover:text-accent transition-colors duration-300 elegant-border">EXOTIC CARS</a>
-              <a href="#" class="block text-gray-300 hover:text-accent transition-colors duration-300 elegant-border">HYPERCARS</a>
-              <a href="#" class="block text-gray-300 hover:text-accent transition-colors duration-300 elegant-border">JDM CARS</a>
-              <a href="#" class="block text-gray-300 hover:text-accent transition-colors duration-300 elegant-border">SPECIAL CARS</a>
-            </div>
-          </div>
-
-          <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">BLOG</a>
-          <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">CART</a>
-          <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">CLUB</a>
-          <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">PODCAST</a>
-          <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">DEALERS</a>
-          <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">VISIT US</a>
-          <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">CONTACT US</a>
-          <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">AURELIA STORE</a>
-          <a href="${pageContext.request.contextPath}/login" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">SIGN IN</a>
-          <a href="${pageContext.request.contextPath}/register" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">REGISTER</a>
-          <a href="#" class="block text-white text-lg hover:text-accent transition-colors duration-300 elegant-border">HISTORY</a>
-        </nav>
-
-        <!-- Social Media Links -->
-        <div class="mt-8 flex gap-4">
-          <a href="#" class="text-gray-300 text-xl hover:text-accent transition-colors duration-300"><i class="fa-brands fa-facebook"></i></a>
-          <a href="#" class="text-gray-300 text-xl hover:text-accent transition-colors duration-300"><i class="fa-brands fa-square-instagram"></i></a>
-          <a href="#" class="text-gray-300 text-xl hover:text-accent transition-colors duration-300"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="#" class="text-gray-300 text-xl hover:text-accent transition-colors duration-300"><i class="fa-brands fa-youtube"></i></a>
-        </div>
-      </div>
-    </div>
-
+    <%@ include file="navbar.jsp" %>
     <!-- Overlay -->
     <div id="overlay" class="fixed inset-0 bg-black/80 z-40 hidden"></div>
   </section>
@@ -532,51 +447,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-primary px-6 md:px-12 pt-8 md:pt-12 pb-4 font-space-grotesk border-t border-accent/20">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 text-white">
-      <div class="w-full">
-        <h3 class="text-base font-semibold mb-2.5 text-accent">Discover</h3>
-        <ul>
-          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">DISCOVER Luxury Motors</a></li>
-          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">Exotic Sports Cars</a></li>
-          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">Exotic Super Cars</a></li>
-          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">Super Cars</a></li>
-          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">Customer Service</a></li>
-        </ul>
-      </div>
-
-      <div class="w-full">
-        <h3 class="text-base font-semibold mb-2.5 text-accent">Legal</h3>
-        <ul>
-          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">Legal Notices</a></li>
-          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">Privacy Policy</a></li>
-          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">Cookie Policy</a></li>
-          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">Contact Us</a></li>
-        </ul>
-      </div>
-
-      <div class="w-full flex flex-col">
-        <h3 class="text-base font-semibold mb-2.5 text-accent">Additional Links</h3>
-        <ul>
-          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">Blog</a></li>
-          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">Cart</a></li>
-          <li class="mb-2.5"><a href="lhttp://localhost:8080/CollegeTutorial/login" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">Sign In</a></li>
-          <li class="mb-2.5"><a href="#" class="text-gray-300 text-sm hover:text-accent transition-colors duration-300 elegant-border">History</a></li>
-        </ul>
-
-        <div class="flex gap-5 mt-2.5">
-          <a href="#" class="text-gray-300 text-xl md:text-2xl hover:text-accent transition-colors duration-300"><i class="fa-brands fa-facebook"></i></a>
-          <a href="#" class="text-gray-300 text-xl md:text-2xl hover:text-accent transition-colors duration-300"><i class="fa-brands fa-square-instagram"></i></a>
-          <a href="#" class="text-gray-300 text-xl md:text-2xl hover:text-accent transition-colors duration-300"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="#" class="text-gray-300 text-xl md:text-2xl hover:text-accent transition-colors duration-300"><i class="fa-brands fa-youtube"></i></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="text-center mt-5 text-accent">
-      <p class="text-xs">© 2024 LUXURY MOTORS. All rights reserved.</p>
-    </div>
-  </footer>
+  <%@ include file="footer.jsp" %>
 
   <!-- JavaScript -->
   <script src="/CollegeTutorial/js/main.js"></script>

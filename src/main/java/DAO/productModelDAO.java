@@ -23,11 +23,10 @@ public class productModelDAO {
 	
 	public ArrayList<productModel> getAllProductDetail(){
 		 ArrayList<productModel> productList = new ArrayList<>();
-		 String query = "SELECT c.car_name, c.car_description, c.car_quantity, c.car_price, c.car_brand, c.car_year, " +
-                 "c.car_model, c.colors_id, col.color_name, c.category_id, cat.category_name " +
-                 "FROM car c " +
-                 "JOIN colors col ON c.colors_id = col.colors_id " +
-                 "JOIN category cat ON c.category_id = cat.category_id";
+		 String query = "SELECT c.car_name, c.car_description, c.car_quantity, c.car_price, c.car_brand, c.car_year, c.store_image, " +
+                 "c.car_model,c.category_id, cat.category_name " +
+                 "FROM car AS c " +
+                 "JOIN category AS cat ON c.category_id = cat.category_id";
 		 try(Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(query)){
 			 while(rs.next()) {
 				
@@ -38,12 +37,10 @@ public class productModelDAO {
 				String carBrand = rs.getString("car_brand");
 				Integer carYear = rs.getInt("car_year");
 				Integer carModel = rs.getInt("car_model");
-				Integer colorID = rs.getInt("colors_id");
-				String colorName = rs.getString("color_name");
 				Integer categoryID = rs.getInt("category_id");
 				String categoryName = rs.getString("category_name");
-				
-				productModel product = new productModel(carName,carDescription,carQuantity,carPrice,carBrand,carYear,carModel,colorID,colorName,categoryID,categoryName);
+				String storeImages = rs.getString("store_image");
+				productModel product = new productModel(carName,carDescription,carQuantity,carPrice,carBrand,carYear,carModel,categoryID,categoryName,storeImages);
 				productList.add(product);				
 			 }
 		 } catch (SQLException e) {
