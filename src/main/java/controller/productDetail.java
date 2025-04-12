@@ -9,25 +9,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.productDAO;
-import models.productModel;
+import DAO.productImageModelDAO;
+import models.productImageModel;
 
 /**
- * Servlet implementation class product
+ * Servlet implementation class productDetail
  */
-@WebServlet("/product")
-public class product extends HttpServlet {
+@WebServlet("/productDetail")
+public class productDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private productDAO dao;
+    private productImageModelDAO dao;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public product() {
+    public productDetail() {
         super();
         // TODO Auto-generated constructor stub
     }
     public void init() {
-    	dao = new productDAO();
+    	dao = new productImageModelDAO();
     }
 
 	/**
@@ -35,10 +35,11 @@ public class product extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<productModel> productList = dao.getAllCars();
-		System.out.println("car: "+ productList.size());
-		request.setAttribute("productList", productList);
-		request.getRequestDispatcher("/pages/store.jsp").forward(request, response);
+		String carName = request.getParameter("car_name");
+		ArrayList<productImageModel> imageList = dao.getProductImage(carName);
+		System.out.println("ImageList: " + imageList.size());
+		request.setAttribute("imageList", imageList);
+		request.getRequestDispatcher("/pages/productDetailPage.jsp").forward(request, response);
 	}
 
 	/**
