@@ -1,39 +1,26 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
-import DAO.categoryDAO;
-
-import models.categoryModel;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class car
+ * Servlet implementation class logout
  */
-@WebServlet("/car")
-public class car extends HttpServlet {
+@WebServlet("/logout")
+public class logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	private categoryDAO dao2;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public car() {
+    public logout() {
         super();
         // TODO Auto-generated constructor stub
-    }
-    public void init() {
-    	
-    	dao2 = new categoryDAO();
-    	
     }
 
 	/**
@@ -41,24 +28,12 @@ public class car extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		Integer userID =(Integer) request.getSession().getAttribute("user_id");
-		
-		ArrayList<categoryModel> categoryList = dao2.getAllCategory();
-		request.setAttribute("categoryList", categoryList);
-		System.out.println("Category found successfully"+categoryList.size());
-		for (categoryModel cat : categoryList) {
-		    System.out.println("Category Name: " + cat.getCategory_name());
-		    System.out.println("Category Description: " + cat.getCategory_description());
+		HttpSession session = request.getSession(false);
+		if(session != null) {
+			session.invalidate();
 		}
+		response.sendRedirect(request.getContextPath() + "/car");
 
-	
-		request.getRequestDispatcher("/pages/main.jsp").forward(request,response);
-		
-		
-		
-
-		
 	}
 
 	/**

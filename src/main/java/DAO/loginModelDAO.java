@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.mysql.cj.xdevapi.Statement;
 
 import controller.EncryptDecrypt;
 import database.DatabaseConnection;
@@ -25,8 +28,9 @@ public class loginModelDAO {
 			System.out.println("Connection failed successfully....");
 			return null;
 		}
-		String query = "Select password,is_admin FROM User WHERE email=?";
+		String query = "Select user_id,password,is_admin FROM User WHERE  email=?";
 		try(PreparedStatement ps = con.prepareStatement(query)){
+
 			ps.setNString(1, login.getEmail());
 			
 			
@@ -34,11 +38,12 @@ public class loginModelDAO {
 			if(rs.next()) {
 				String encryptedPassword = rs.getString("password");
 				boolean is_admin = rs.getBoolean("is_admin");
+				int user_id = rs.getInt("user_id");
 				EncryptDecrypt ed = new EncryptDecrypt();
 				String decryptedPassword = ed.encrypt(login.getPassword());
 				
 				if(decryptedPassword != null && decryptedPassword.equals(encryptedPassword)) {
-					return new loginModel(login.getEmail(), login.getPassword(), is_admin);
+					return new loginModel(user_id,login.getEmail(), login.getPassword(), is_admin);
 				}
 			}
 			
@@ -47,6 +52,25 @@ public class loginModelDAO {
 		}
 		return null;
 		
+	}
+	
+	public ArrayList<loginModel> getAllUserInfo() throws SQLException{
+		ArrayList<loginModel> loginList = new ArrayList<>();
+		String query = "Select * from users";
+		try(PreparedStatement ps=con.prepareStatement(query)){
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			int userID = rs.getInt("user_id");
+			String email = rs.getString("email");
+			String password = rs.getString("password");
+			boolean isAdmin = rs.getBoolean("is_admin");
+			loginModel user = new loginModel(userID,email,password,isAdmin);
+			loginList.add(user);
+		}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return loginList;
 	}
 	
 }

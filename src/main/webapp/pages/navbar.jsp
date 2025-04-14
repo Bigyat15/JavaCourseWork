@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="models.loginModel" %>
+<%@ page session="true" %>
 
 <style>
     .hamburger.active span:nth-child(1) {
@@ -93,8 +95,23 @@ pageEncoding="UTF-8"%>
       <a href="#" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">VISIT US</a>
       <a href="#" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">CONTACT US</a>
       <a href="${pageContext.request.contextPath}/store" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">AURELIA STORE</a>
-      <a href="${pageContext.request.contextPath}/login" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">SIGN IN</a>
-      <a href="${pageContext.request.contextPath}/register" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">REGISTER</a>
+
+      <!-- Conditional Links Based on User Session -->
+      <%
+        String userEmail = (String) session.getAttribute("email");
+        if (userEmail != null) {
+      %>
+        <a href="${pageContext.request.contextPath}/profile" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">PROFILE</a>
+        <a href="${pageContext.request.contextPath}/logout" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">SIGN OUT</a>
+      <%
+        } else {
+      %>
+        <a href="${pageContext.request.contextPath}/login" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">SIGN IN</a>
+        <a href="${pageContext.request.contextPath}/register" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">REGISTER</a>
+      <%
+        }
+      %>
+
       <a href="#" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">HISTORY</a>
     </nav>
 

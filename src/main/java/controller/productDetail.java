@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DAO.categoryDAO;
 import DAO.colorModelDAO;
@@ -46,6 +47,23 @@ public class productDetail extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession(false);
+        if(session == null) {
+            System.out.println("Session is null in cart servlet.");
+        } else {
+            System.out.println("Session exists in cart servlet. User ID: " + session.getAttribute("user_id"));
+        }
+     
+        if(session == null || session.getAttribute("user_id") == null) {
+            System.out.println("Session is null or user_id is missing.");
+            String referer = request.getHeader("Referer");
+            session = request.getSession(true);
+            session.setAttribute("redirectAfterLogin", referer);
+            response.sendRedirect(request.getContextPath()+"/pages/login.jsp");
+            return;
+        }
+        
+        int userID = (int) session.getAttribute("user_id");
 		String carName = request.getParameter("car_name");
 		if(carName == null || carName.trim().isEmpty()) {
 			request.getRequestDispatcher("/pages/somethingWentWrong.jsp").forward(request, response);
@@ -57,6 +75,7 @@ public class productDetail extends HttpServlet {
 		request.setAttribute("imageList", imageList);
 
 		try {
+			System.out.println("User ID: " + userID);
 			ArrayList<colorModel> colorList = dao2.getColorList(carName);
 			System.out.println("colorList: "+colorList.size());
 			request.setAttribute("colorList", colorList);

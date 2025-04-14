@@ -213,16 +213,33 @@
 					<%
 					}%>
                     </div>
-
+						<% 
+                        
+                        if(imageList != null && !imageList.isEmpty()){
+                            productImageModel firstImage = imageList.get(0); 
+                        %>
                     <!-- Action Buttons -->
                     <div class="flex space-x-4">
                         <button class="flex-1 bg-lambo-yellow text-lambo-black px-8 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all">
-                            Configure Now
+                            Buy now
                         </button>
-                        <button class="flex-1 border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-lambo-black transition-all">
-                            Book a Test Drive
-                        </button>
+
+                        <form method="POST" action="${pageContext.request.contextPath}/cart">
+							<input type="hidden" name="car_name" value="<%=firstImage.getCar_name() %>">
+                        	<input type="hidden" name="car_id" value="<%=firstImage.getCar_id() %>">
+                        	<input type="hidden" name="car_image" value="<%=firstImage.getCar_images_path() %>">
+    						<input type="hidden" name="car_price" value="<%=firstImage.getCar_price() %>">
+    						<input type="hidden" name="quantity" min="1" value="1" class="w-20 text-center border rounded">
+                        	<button type="submit"  class="flex-1 border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-lambo-black transition-all">
+                            Add to cart
+                        	</button>
+                        </form>
                     </div>
+                    <% }else{
+					%>
+					<p>No category</p>
+					<%
+					}%>
                 </div>
             </div>
         </div>

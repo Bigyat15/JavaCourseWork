@@ -433,7 +433,7 @@
             <div class="text-center mt-6">
                 <p class="text-sm text-gray-300">
                     Already have an account?
-                    <a href="login.jsp" class="font-medium text-accent hover:text-white transition-colors duration-300">
+                    <a href="login" class="font-medium text-accent hover:text-white transition-colors duration-300">
                         Sign in
                     </a>
                 </p>
