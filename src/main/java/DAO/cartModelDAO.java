@@ -45,12 +45,12 @@ public class cartModelDAO {
 	                updatePs.executeUpdate();
 	            }
 	        } else {
-	            String insertQuery = "INSERT INTO cart_items (cart_id, user_id, car_id, quantity) VALUES (?, ?, ?, ?)";
+	            String insertQuery = "INSERT INTO cart_items (cart_id, car_id, quantity) VALUES (?, ?, ?)";
 	            try(PreparedStatement insertPs = con.prepareStatement(insertQuery)){
 	                insertPs.setInt(1, cartId);
-	                insertPs.setInt(2, userID);
-	                insertPs.setInt(3, item.getCar_id());
-	                insertPs.setString(4, item.getQuantity());
+
+	                insertPs.setInt(2, item.getCar_id());
+	                insertPs.setString(3, item.getQuantity());
 	                int rowsAffected = insertPs.executeUpdate();
 	                if (rowsAffected > 0) {
 	                    System.out.println("Item added to cart_items successfully: Car ID = " + item.getCar_id());
@@ -78,13 +78,13 @@ public class cartModelDAO {
 
 		
 		if (cartID != -1) {
-			String query = "SELECT ci.user_id, ci.cart_id, ci.car_id, ci.quantity, c.car_name, c.car_description, c.car_price, c.store_image " +
+			String query = "SELECT  ci.cart_id, ci.car_id, ci.quantity, c.car_name, c.car_description, c.car_price, c.store_image " +
 						   "FROM cart_items ci JOIN car c ON ci.car_id = c.car_id WHERE ci.cart_id = ?";
 			try (PreparedStatement ps = con.prepareStatement(query)) {
 				ps.setInt(1, cartID);
 				ResultSet rs = ps.executeQuery();
 				while (rs.next()) {
-					int userIDD = rs.getInt("user_id");
+					
 					int cartIDFromDb = rs.getInt("cart_id");
 					int carID = rs.getInt("car_id");
 					String quantity = rs.getString("quantity");
@@ -93,7 +93,7 @@ public class cartModelDAO {
 					double carPrice = rs.getDouble("car_price");
 					String storePath = rs.getString("store_image");
 
-					cartModel cart = new cartModel(userIDD, cartIDFromDb, carID, quantity, carName, carDescription, carPrice, storePath);
+					cartModel cart = new cartModel(userID, cartIDFromDb, carID, quantity, carName, carDescription, carPrice, storePath);
 					cartList.add(cart);
 				}
 			}
