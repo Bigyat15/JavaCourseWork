@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.loginModelDAO;
 import DAO.registerDAO;
+import models.loginModel;
 import models.registerModel;
 
 /**
@@ -20,6 +23,7 @@ import models.registerModel;
 public class register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private registerDAO dao;
+	private loginModelDAO dao1;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -30,6 +34,7 @@ public class register extends HttpServlet {
     }
     public void init() {
     	dao = new registerDAO();
+    	dao1 = new loginModelDAO();
     }
 
 	/**
@@ -37,6 +42,15 @@ public class register extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		ArrayList<loginModel> userList;
+		try {
+			userList = dao1.getAllUserInfo();
+			request.setAttribute("userList", userList);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		request.getRequestDispatcher("pages/register.jsp").forward(request, response);
 	}
 
@@ -54,36 +68,36 @@ public class register extends HttpServlet {
 
 
 	    if (first_name == null || first_name.trim().isEmpty()) {
-	        response.sendRedirect("register.jsp?error=firstName");
+	        response.sendRedirect("/CollegeTutorial/pages/register.jsp?error=firstName");
 	        return;
 	    }
 	    if (last_name == null || last_name.trim().isEmpty()) {
-	        response.sendRedirect("register.jsp?error=lastName");
+	        response.sendRedirect("/CollegeTutorial/pages/register.jsp?error=lastName");
 	        return;
 	    }
 	    if (DOB == null || DOB.trim().isEmpty()) {
-	        response.sendRedirect("register.jsp?error=dob");
+	        response.sendRedirect("/CollegeTutorial/pages/register.jsp?error=dob");
 	        return;
 	    }
 	    if (email == null || email.trim().isEmpty()) {
-	        response.sendRedirect("register.jsp?error=email");
+	        response.sendRedirect("/CollegeTutorial/pages/register.jsp?error=email");
 	        return;
 	    }
 	    if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
-	        response.sendRedirect("register.jsp?error=phoneNumber");
+	        response.sendRedirect("/CollegeTutorial/pages/register.jsp?error=phoneNumber");
 	        return;
 	    }
 	    if (password == null || password.trim().isEmpty()) {
-	        response.sendRedirect("register.jsp?error=password");
+	        response.sendRedirect("/CollegeTutorial/pages/register.jsp?error=password");
 	        return;
 	    }
 	    if (confirmPassword == null || confirmPassword.trim().isEmpty()) {
-	        response.sendRedirect("register.jsp?error=confirmPassword");
+	        response.sendRedirect("/CollegeTutorial/pages/register.jsp?error=confirmPassword");
 	        return;
 	    }
 
 	    if (!password.equals(confirmPassword)) {
-	        response.sendRedirect("register.jsp?error=passwordMismatch");
+	        response.sendRedirect("/CollegeTutorial/pages/register.jsp?error=passwordMismatch");
 	        return;
 	    }
 
@@ -91,15 +105,19 @@ public class register extends HttpServlet {
 	    registerModel register = new registerModel(first_name, last_name, DOB, email, phoneNumber,false,LocalDateTime.now(),LocalDateTime.now(), password);
 
 	    try {
+	    	if(dao.emailExist(email)) {
+	    		response.sendRedirect("/CollegeTutorial/pages/register.jsp?error=emailExists");
+	    		return;
+	    	}
 	        boolean success = dao.addRegistrationDetail(register);
 	        if (success) {
-	            response.sendRedirect(request.getContextPath()+"/pages/login.jsp");
+	            response.sendRedirect(request.getContextPath()+"/login");
 	        } else {
 	            response.sendRedirect(request.getContextPath()+"/pages/register.jsp?error=registrationFailed");
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
-	        response.sendRedirect("register.jsp?error=databaseError");
+	        response.sendRedirect("/CollegeTutorial/pages/register.jsp?error=databaseError");
 	    }
 	}
 

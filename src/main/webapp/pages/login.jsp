@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxury Motors - Login</title>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -167,6 +168,15 @@
                         Invalid email or password. Please try again.
                     </p>
                 	<%} %>
+                	
+
+			<%-- <c:if test="${param.error == 'failed'}">
+   				 <p class="text-red-400 text-center flex items-center justify-center gap-2">
+        			<i class="fas fa-exclamation-circle"></i>
+        			Invalid email or password. Please try again.
+    			</p>
+			</c:if> --%>
+                	
                     <!-- Email Input -->
                     <div>
                         <label for="email" class="sr-only">Email address</label>

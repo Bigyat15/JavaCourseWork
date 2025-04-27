@@ -89,14 +89,14 @@
                         if(imageList != null && !imageList.isEmpty()){
                             productImageModel firstImage = imageList.get(0); 
                         %>
-                            <!-- Display main image -->
+                            <!-- main image -->
                             <img id="mainImage" src="<%= firstImage.getCar_images_path() %>" 
                                  alt="Lamborghini Aventador SVJ" 
                                  class="w-full h-auto rounded-lg main-image">
                         </div>
                         <div class="grid grid-cols-4 gap-4">
                             <% 
-                            // Loop through the image list and display thumbnails
+                            
                             for (productImageModel pim : imageList) {
                                 String[] imagePaths = pim.getCar_images_path().split(",");
                                 for (int i = 0; i < imagePaths.length; i++) {
@@ -229,6 +229,8 @@
                         	<input type="hidden" name="car_id" value="<%=firstImage.getCar_id() %>">
                         	<input type="hidden" name="car_image" value="<%=firstImage.getCar_images_path() %>">
     						<input type="hidden" name="car_price" value="<%=firstImage.getCar_price() %>">
+    						<input type="hidden" name="total" id="total">
+
     						<input type="hidden" name="quantity" min="1" value="1" class="w-20 text-center border rounded">
                         	<button type="submit"  class="flex-1 border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-lambo-black transition-all">
                             Add to cart

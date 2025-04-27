@@ -106,11 +106,19 @@ public class cart extends HttpServlet {
             String carName = request.getParameter("car_name");
             String carDescription = request.getParameter("car_description");
             String carPriceParam = request.getParameter("car_price");
+            String totalPriceParam = request.getParameter("total");
+            if (totalPriceParam != null) {
+                totalPriceParam = totalPriceParam.trim();
+                double totalPrice = Double.parseDouble(totalPriceParam);
+            } else {
+                System.out.println("totalPrice parameter is missing!");
+            }
             System.out.println("Car price parameter: "+carPriceParam);
             if(carPriceParam == null || carPriceParam.trim().isEmpty()) {
             	throw new IllegalArgumentException("Car price is required");
             }
             double carPrice = Double.parseDouble(carPriceParam.trim());
+            double totalPrice = Double.parseDouble(totalPriceParam.trim());
             String storePath = request.getParameter("store_image");
             String action = request.getParameter("action");
             
@@ -120,15 +128,22 @@ public class cart extends HttpServlet {
             int cartID = dao.createNewCartForUser(userID);
             if("add".equals(action)) {
             	dao.incrementItemQuantity(cartID, carID);
+            	double totalPricee = carPrice * quantityValue;
+            	dao.updateCartTotalPrice(cartID, totalPricee);
             	
             }else if("subtract".equals(action)){
             	dao.decreaseItemQuantity(cartID, carID);
+            	double totalPricee = carPrice * (quantityValue - 1);
+            	dao.updateCartTotalPrice(cartID, totalPricee);
             }else if("delete".equals(action)){
             	dao.deleteCartItem(cartID, carID);
             }
             else {
-            	cartModel item = new cartModel(userID, cartID, carID, quantity, carName, carDescription, carPrice, storePath);
+            	cartModel item = new cartModel(userID, cartID, carID, quantity,totalPrice, carName, carDescription, carPrice, storePath);
             	dao.addToCart(item);
+            	
+//            	double totalPricee = carPrice * quantityValue;
+//            	dao.updateCartTotalPrice(cartID, totalPricee);
             	
             }
             if(quantityValue <= 0) {

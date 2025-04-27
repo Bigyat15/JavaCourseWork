@@ -5,17 +5,19 @@ public class cartModel {
 	private Integer cart_id;
 	private Integer car_id;
 	private String quantity;
+	private double totalPrice;
 	private String car_name;
 	private String car_description;
 	private double car_price;
 	private String store_image;
-	public cartModel(Integer user_id, Integer cart_id, Integer car_id, String quantity, String car_name,
+	public cartModel(Integer user_id, Integer cart_id, Integer car_id, String quantity,double totalPrice, String car_name,
 			String car_description, double car_price, String store_image) {
 		super();
 		this.user_id = user_id;
 		this.cart_id = cart_id;
 		this.car_id = car_id;
 		this.quantity = quantity;
+		this.totalPrice = totalPrice;
 		this.car_name = car_name;
 		this.car_description = car_description;
 		this.car_price = car_price;
@@ -44,6 +46,12 @@ public class cartModel {
 	}
 	public void setQuantity(String quantity) {
 		this.quantity = quantity;
+	}
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 	public String getCar_name() {
 		return car_name;

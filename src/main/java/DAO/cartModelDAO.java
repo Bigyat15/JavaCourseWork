@@ -78,7 +78,7 @@ public class cartModelDAO {
 
 		
 		if (cartID != -1) {
-			String query = "SELECT  ci.cart_id, ci.car_id, ci.quantity, c.car_name, c.car_description, c.car_price, c.store_image " +
+			String query = "SELECT  ci.cart_id, ci.car_id, ci.quantity,ci.total, c.car_name, c.car_description, c.car_price, c.store_image " +
 						   "FROM cart_items ci JOIN car c ON ci.car_id = c.car_id WHERE ci.cart_id = ?";
 			try (PreparedStatement ps = con.prepareStatement(query)) {
 				ps.setInt(1, cartID);
@@ -88,12 +88,13 @@ public class cartModelDAO {
 					int cartIDFromDb = rs.getInt("cart_id");
 					int carID = rs.getInt("car_id");
 					String quantity = rs.getString("quantity");
+					double totalPrice = rs.getDouble("total");
 					String carName = rs.getString("car_name");
 					String carDescription = rs.getString("car_description");
 					double carPrice = rs.getDouble("car_price");
 					String storePath = rs.getString("store_image");
 
-					cartModel cart = new cartModel(userID, cartIDFromDb, carID, quantity, carName, carDescription, carPrice, storePath);
+					cartModel cart = new cartModel(userID, cartIDFromDb, carID, quantity,totalPrice, carName, carDescription, carPrice, storePath);
 					cartList.add(cart);
 				}
 			}
@@ -152,6 +153,14 @@ public class cartModelDAO {
 			ps.setInt(2, carID);
 			ps.executeUpdate();
 			System.out.println("Cart item deleted: cartID=" + cartID + ", carID=" + carID);
+		}
+	}
+	public void updateCartTotalPrice(int cartID,double totalPrice) throws SQLException {
+		String query = "UPDATE cart_items SET total = ? WHERE cart_id = ?";
+		try(PreparedStatement pst = con.prepareStatement(query)){
+			pst.setDouble(1, totalPrice);
+			pst.setInt(2, cartID);
+			pst.executeUpdate();
 		}
 	}
 

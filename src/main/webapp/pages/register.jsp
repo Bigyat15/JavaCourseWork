@@ -337,6 +337,38 @@
             <!-- Registration Form -->
             <form class="space-y-6" action="${pageContext.request.contextPath}/register" method="POST">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <%
+    String error = request.getParameter("error");
+    if (error != null) {
+%>
+    <div class="bg-red-100 text-red-700 px-4 py-3 rounded mb-4 border border-red-300">
+        <strong>Error:</strong>
+        <% if (error.equals("firstName")) { %>
+            First Name is required.
+        <% } else if (error.equals("lastName")) { %>
+            Last Name is required.
+        <% } else if (error.equals("dob")) { %>
+            Date of Birth is required.
+        <% } else if (error.equals("email")) { %>
+            Email is required.
+        <% } else if (error.equals("emailExists")) { %>
+            Email already exists.
+        <% } else if (error.equals("phoneNumber")) { %>
+            Phone Number is required.
+        <% } else if (error.equals("password")) { %>
+            Password is required.
+        <% } else if (error.equals("confirmPassword")) { %>
+            Confirm Password is required.
+        <% } else if (error.equals("passwordMismatch")) { %>
+            Password and Confirm Password do not match.
+        <% } else if (error.equals("registrationFailed")) { %>
+            Registration failed. Please try again.
+        <% } else if (error.equals("databaseError")) { %>
+            Database error. Please try again later.
+        <% } %>
+    </div>
+<% } %>
+                
                     <!-- First Name -->
                     <div class="form-group">
                         <i class="fas fa-user input-icon"></i>

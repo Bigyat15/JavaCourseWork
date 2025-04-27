@@ -2,6 +2,7 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import controller.EncryptDecrypt;
@@ -44,5 +45,26 @@ public class registerDAO {
 			e.printStackTrace();
 		}
 		return hasInserted;
+	}
+	
+	
+	
+	
+	
+	public boolean emailExist(String email) throws SQLException {
+		boolean found = false;
+		String query = "Select COUNT(*) FROM user WHERE email = ?";
+		try(PreparedStatement ps = con.prepareStatement(query)){
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				found = rs.getInt(1) > 0;
+			}
+		}catch(SQLException e) {
+			System.out.println("SQL Error in emailExists: " + e.getMessage());
+			e.printStackTrace();
+		}
+		return found;
+		
 	}
 }

@@ -56,6 +56,7 @@
                 <input name="car_name" type="hidden" value="<%=car.getCar_name() %>">
                 <input name="quantity" type="hidden" value="<%=car.getQuantity() %>">
                 <input name="car_price" type="hidden" value="<%=car.getCar_price() %>">
+                <input type="hidden" name="total" value="<%=car.getTotalPrice() %>" />
                 <input type="hidden" name="action" value="subtract">
               	<button class="px-4 py-2 text-[#D4AF37] hover:bg-[#1a1a1a] transition">−</button>
               </form>
@@ -66,6 +67,7 @@
                 <input name="car_name" type="hidden" value="<%=car.getCar_name() %>">
                 <input name="quantity" type="hidden" value="<%=car.getQuantity() %>">
                 <input name="car_price" type="hidden" value="<%=car.getCar_price() %>">
+                <input type="hidden" name="total" value="<%=car.getTotalPrice() %>" />
                 <input type="hidden" name="action" value="add">
                 <button type="submit" class="px-4 py-2 text-[#D4AF37] hover:bg-[#1a1a1a] transition">+</button>
                 </form>
@@ -75,12 +77,14 @@
                 <input name="car_name" type="hidden" value="<%=car.getCar_name() %>">
                 <input name="quantity" type="hidden" value="<%=car.getQuantity() %>">
                 <input name="car_price" type="hidden" value="<%=car.getCar_price() %>">
+                <input type="hidden" name="total" value="<%=car.getTotalPrice() %>" />
+                
                 <input type="hidden" name="action" value="delete">
               	<button type="submit" class="text-[#999999] hover:text-[#D4AF37] transition uppercase text-sm tracking-wider">Remove</button>
               </form>
             </div>
           </div>
-          <p class="text-2xl text-[#D4AF37] font-semibold">$<%=car.getCar_price() %></p>
+          <p class="text-2xl text-[#D4AF37] font-semibold">$<%=car.getTotalPrice() %></p>
           
         </div>
         <%
@@ -102,7 +106,7 @@
       <div class="max-w-lg ml-auto space-y-8">
         <div class="flex justify-between text-xl">
           <span>Subtotal</span>
-          <span class="text-[#D4AF37]">$3,800,000</span>
+          <span class="text-[#D4AF37]">$</span>
         </div>
         <div class="flex justify-between text-xl">
           <span>Delivery</span>

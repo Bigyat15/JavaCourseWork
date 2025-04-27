@@ -32,26 +32,30 @@ public class login extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // If user is already logged in, redirect them to the appropriate page
-        HttpSession session = request.getSession(false);
-        
-        if (session != null) {
-            Integer userId = (Integer) session.getAttribute("user_id");
-            if (userId != null) {
-                System.out.println("User is logged in: " + userId);
-            } else {
-                System.out.println("No user_id in session");
-            }
-        } else {
-            System.out.println("Session is null");
-        }
-//        ArrayList<loginModel> loginList = dao.getAllUserInfo();
-//        request.setAttribute("loginList",loginList);
+//        HttpSession session = request.getSession(false);
+//        
+//        if (session != null) {
+//            Integer userId = (Integer) session.getAttribute("user_id");
+//            if (userId != null) {
+//                System.out.println("User is logged in: " + userId);
+//            } else {
+//                System.out.println("No user_id in session");
+//            }
+//        } else {
+//            System.out.println("Session is null");
+//        }
+    	
+    	
         request.getRequestDispatcher("/pages/login.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userIdParam = request.getParameter("user_id");
+        String first_name = request.getParameter("first_name");
+        String last_name = request.getParameter("last_name");
+        String dob = request.getParameter("dob");
         String email = request.getParameter("email");
+        String phoneNumber = request.getParameter("phone_number");
         String password = request.getParameter("password");
 
         // Check if user_id is not null and can be parsed to an integer
@@ -74,9 +78,10 @@ public class login extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/pages/login.jsp?error=password");
             return;
         }
+        
 
         try {
-            loginModel login = new loginModel(userID, email, password, false);
+            loginModel login = new loginModel(userID,first_name,last_name,dob, email,phoneNumber, password, false,null,null);
             loginModel result = dao.loginAttempt(login);
             if (result != null) {
                 HttpSession session = request.getSession();
@@ -93,9 +98,9 @@ public class login extends HttpServlet {
                     session.removeAttribute("redirectAfterLogin");  // Remove the redirect URL from session
                     response.sendRedirect(redirectAfterLogin);
                 } else {
-                    // If there's no referring page stored, send the user to the default page
+//                     If there's no referring page stored, send the user to the default page
                     if (result.isIs_admin()) {
-                        response.sendRedirect(request.getContextPath() + "/pages/adminDashboard.jsp");
+                        response.sendRedirect(request.getContextPath() + "/adminDashboard");
                     } else {
                     	// New redirect to car servlet
                     	response.sendRedirect(request.getContextPath() + "/car");
