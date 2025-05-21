@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import database.DatabaseConnection;
@@ -18,6 +19,7 @@ public class cartModelDAO {
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
 		}
 	}
 	
@@ -37,20 +39,25 @@ public class cartModelDAO {
 	        if(rs.next()) {
 	            int currentQuantity = Integer.parseInt(rs.getString("quantity"));
 	            int newQuantity = currentQuantity + Integer.parseInt(item.getQuantity());
-	            String updateQuery = "UPDATE cart_items SET quantity = ? WHERE cart_id = ? AND car_id = ?";
-	            try(PreparedStatement updatePs = con.prepareStatement(updateQuery)){
+	            double currentTotal = rs.getDouble("total");
+	            double itemPrice = currentTotal / currentQuantity; // Calculate price per unit
+	            double newTotal = itemPrice * newQuantity;
+	            String updateQuery = "UPDATE cart_items SET quantity = ?, total = ? WHERE cart_id = ? AND car_id = ?";
+	            try (PreparedStatement updatePs = con.prepareStatement(updateQuery)) {
 	                updatePs.setInt(1, newQuantity);
-	                updatePs.setInt(2, cartId);
-	                updatePs.setInt(3, item.getCar_id());
+	                updatePs.setDouble(2, newTotal);
+	                updatePs.setInt(3, cartId);
+	                updatePs.setInt(4, item.getCar_id());
 	                updatePs.executeUpdate();
 	            }
 	        } else {
-	            String insertQuery = "INSERT INTO cart_items (cart_id, car_id, quantity) VALUES (?, ?, ?)";
+	            String insertQuery = "INSERT INTO cart_items (cart_id, car_id, quantity,total) VALUES (?, ?, ?,?)";
 	            try(PreparedStatement insertPs = con.prepareStatement(insertQuery)){
 	                insertPs.setInt(1, cartId);
 
 	                insertPs.setInt(2, item.getCar_id());
 	                insertPs.setString(3, item.getQuantity());
+	                insertPs.setDouble(4, item.getTotalPrice());
 	                int rowsAffected = insertPs.executeUpdate();
 	                if (rowsAffected > 0) {
 	                    System.out.println("Item added to cart_items successfully: Car ID = " + item.getCar_id());
@@ -163,6 +170,42 @@ public class cartModelDAO {
 			pst.executeUpdate();
 		}
 	}
+	
+	public int createOrder(double total) throws SQLException {
+	    String query = "INSERT INTO `orders` (total) VALUES (?)";
+	    try (PreparedStatement stmt = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+	        stmt.setDouble(1, total);
+
+	        int affectedRows = stmt.executeUpdate();
+	        if (affectedRows == 0) {
+	            throw new SQLException("Creating order failed, no rows affected.");
+	        }
+
+	        try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+	            if (generatedKeys.next()) {
+	                return generatedKeys.getInt(1); // Return the auto-generated order_id
+	            } else {
+	                throw new SQLException("Creating order failed, no ID obtained.");
+	            }
+	        }
+	    }
+	}
+
+
+	
+	public void addOrderItem(int orderId, int carId, int cartId, int userId) throws SQLException {
+	    // Query with the correct column names (including order_id)
+	    String query = "INSERT INTO order_items (order_id, car_id, cart_id, user_id) VALUES (?, ?, ?, ?)";
+	    
+	    try (PreparedStatement stmt = con.prepareStatement(query)) {
+	        stmt.setInt(1, orderId);  // Binding the order_id
+	        stmt.setInt(2, carId);    // Binding the car_id
+	        stmt.setInt(3, cartId);   // Binding the cart_id
+	        stmt.setInt(4, userId);   // Binding the user_id
+	        stmt.executeUpdate();
+	    }
+	}
+
 
 
 }

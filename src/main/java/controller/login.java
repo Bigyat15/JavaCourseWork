@@ -31,19 +31,7 @@ public class login extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // If user is already logged in, redirect them to the appropriate page
-//        HttpSession session = request.getSession(false);
-//        
-//        if (session != null) {
-//            Integer userId = (Integer) session.getAttribute("user_id");
-//            if (userId != null) {
-//                System.out.println("User is logged in: " + userId);
-//            } else {
-//                System.out.println("No user_id in session");
-//            }
-//        } else {
-//            System.out.println("Session is null");
-//        }
+
     	
     	
         request.getRequestDispatcher("/pages/login.jsp").forward(request, response);

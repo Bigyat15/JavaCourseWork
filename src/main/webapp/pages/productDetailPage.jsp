@@ -78,6 +78,7 @@
 </head>
 <body class="bg-lambo-black text-white">
     <!-- Product Detail Section -->
+    <%@include file="navbar.jsp" %>
     <section class="pt-32 pb-20">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -220,17 +221,16 @@
                         %>
                     <!-- Action Buttons -->
                     <div class="flex space-x-4">
-                        <button class="flex-1 bg-lambo-yellow text-lambo-black px-8 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all">
+                        <!-- <button class="flex-1 bg-lambo-yellow text-lambo-black px-8 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all">
                             Buy now
-                        </button>
+                        </button> -->
 
                         <form method="POST" action="${pageContext.request.contextPath}/cart">
 							<input type="hidden" name="car_name" value="<%=firstImage.getCar_name() %>">
                         	<input type="hidden" name="car_id" value="<%=firstImage.getCar_id() %>">
                         	<input type="hidden" name="car_image" value="<%=firstImage.getCar_images_path() %>">
     						<input type="hidden" name="car_price" value="<%=firstImage.getCar_price() %>">
-    						<input type="hidden" name="total" id="total">
-
+    						<input type="hidden" name="total" id="total" value="<%=firstImage.getCar_price() %>">
     						<input type="hidden" name="quantity" min="1" value="1" class="w-20 text-center border rounded">
                         	<button type="submit"  class="flex-1 border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-lambo-black transition-all">
                             Add to cart
@@ -247,49 +247,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-lambo-black py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h4 class="text-xl font-bold mb-4">LAMBORGHINI</h4>
-                    <p class="text-gray-400">Experience the ultimate in automotive excellence.</p>
-                </div>
-                <div>
-                    <h4 class="text-xl font-bold mb-4">Models</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-lambo-yellow">Aventador</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-lambo-yellow">Huracán</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-lambo-yellow">Urus</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-xl font-bold mb-4">Contact</h4>
-                    <ul class="space-y-2">
-                        <li class="text-gray-400">+1 (555) 123-4567</li>
-                        <li class="text-gray-400">info@lamborghini.com</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-xl font-bold mb-4">Follow Us</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-lambo-yellow">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-lambo-yellow">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-lambo-yellow">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-lambo-gray mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Lamborghini. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <%@include file="footer.jsp" %>
 
     <!-- JavaScript to handle image changing on thumbnail click -->
     <script>
@@ -316,5 +274,6 @@
             });
         });
     </script>
+      <script type="text/javascript" src="/CollegeTutorial/js/main.js"></script>
 </body>
 </html>

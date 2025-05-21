@@ -74,7 +74,7 @@
       <a href="${pageContext.request.contextPath}/car" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">HOME</a>
 
       <!-- Dropdown Menu -->
-      <div class="dropdown">
+      <!-- <div class="dropdown">
         <a href="#" class="dropdown-toggle text-white text-lg hover:text-white/80 transition-colors duration-300 flex items-center justify-between elegant-border">
           CARS
           <i class="fas fa-chevron-down ml-2 text-sm"></i>
@@ -85,13 +85,13 @@
           <a href="#" class="block text-white/80 hover:text-white transition-colors duration-300 elegant-border">JDM CARS</a>
           <a href="#" class="block text-white/80 hover:text-white transition-colors duration-300 elegant-border">SPECIAL CARS</a>
         </div>
-      </div>
+      </div> -->
 
       <a href="#" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">BLOG</a>
-      <a href="#" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">CART</a>
+      <a href="${pageContext.request.contextPath}/cart" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">CART</a>
       <a href="#" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">CLUB</a>
       <a href="#" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">PODCAST</a>
-      <a href="#" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">DEALERS</a>
+      <a href="${pageContext.request.contextPath}/pages/aboutus.jsp" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">About US</a>
       <a href="#" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">VISIT US</a>
       <a href="#" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">CONTACT US</a>
       <a href="${pageContext.request.contextPath}/store" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">AURELIA STORE</a>
@@ -101,7 +101,7 @@
         String userEmail = (String) session.getAttribute("email");
         if (userEmail != null) {
       %>
-        <a href="${pageContext.request.contextPath}/profile" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">PROFILE</a>
+        <a href="${pageContext.request.contextPath}/userDashboard" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">PROFILE</a>
         <a href="${pageContext.request.contextPath}/logout" class="block text-white text-lg hover:text-white/80 transition-colors duration-300 elegant-border">SIGN OUT</a>
       <%
         } else {
@@ -174,3 +174,4 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script> 
+

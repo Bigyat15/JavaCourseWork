@@ -40,6 +40,7 @@
       <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 items-center bg-[#111] rounded-xl shadow-xl p-6 transition hover:shadow-2xl duration-300">
       <%
         for(cartModel car: cartList){
+        	
         %>
         <div class="aspect-video bg-[#1a1a1a] rounded-lg overflow-hidden">
         
@@ -82,6 +83,24 @@
                 <input type="hidden" name="action" value="delete">
               	<button type="submit" class="text-[#999999] hover:text-[#D4AF37] transition uppercase text-sm tracking-wider">Remove</button>
               </form>
+              <%
+              
+              if(cartList != null && !cartList.isEmpty()){
+              %>
+                  <form action="${pageContext.request.contextPath}/cart" method="POST">
+                      <input type="hidden" name="car_id" value="<%=car.getCar_id() %>">
+                      <input type="hidden" name="cart_id" value="<%=car.getCart_id()%>">
+                      <input type="hidden" name="user_id" value="<%=car.getUser_id() %>">
+                      <input type="hidden" name="car_price" value="<%=car.getCar_price() %>">
+                      <input type="hidden" name="total" value="<%=car.getTotalPrice() %>">
+                      <input type="hidden" name="action" value="buyNow">
+                      <button type="submit" class="flex-1 text-center bg-[#D4AF37] text-[#0a0a0a] py-4 px-6 rounded-lg shadow-md hover:bg-[#b69530] transition uppercase tracking-wider font-semibold">
+                          Buy Now
+                      </button>
+                  </form>
+              <%
+              }
+              %>
             </div>
           </div>
           <p class="text-2xl text-[#D4AF37] font-semibold">$<%=car.getTotalPrice() %></p>
@@ -100,36 +119,59 @@
 	<%
 	}
 	%>
+	
     <!-- Summary -->
     
-    <div class="mt-20 border-t border-[#333] pt-12">
+    <%-- <div class="mt-20 border-t border-[#333] pt-12">
       <div class="max-w-lg ml-auto space-y-8">
+      <%
+        if(cartList != null && !cartList.isEmpty()){
+        	cartModel cart = cartList.get(0);
+        
+        %>
         <div class="flex justify-between text-xl">
           <span>Subtotal</span>
-          <span class="text-[#D4AF37]">$</span>
-        </div>
-        <div class="flex justify-between text-xl">
-          <span>Delivery</span>
-          <span class="text-[#D4AF37]">Complimentary</span>
+          <span class="text-[#D4AF37]">$<%=cart.getTotalPrice() %></span>
         </div>
         <div class="flex justify-between text-2xl font-playfair-display text-[#D4AF37] pt-4 border-t border-[#333]">
           <span>Total</span>
-          <span>$3,800,000</span>
+          <span>$<%=cart.getTotalPrice() %></span>
         </div>
 
         <!-- Buttons -->
+        
         <div class="flex flex-col sm:flex-row gap-4 pt-10">
-          <a href="#" class="flex-1 text-center bg-[#D4AF37] text-[#0a0a0a] py-4 px-6 rounded-lg shadow-md hover:bg-[#b69530] transition uppercase tracking-wider font-semibold">
-            Secure Checkout
-          </a>
-          <a href="#" class="flex-1 text-center border border-[#D4AF37] text-[#D4AF37] py-4 px-6 rounded-lg hover:bg-[#D4AF37]/10 transition uppercase tracking-wider font-semibold">
+        <form action="${pageContext.request.contextPath}/cart" method="POST">
+        <input type="hidden" name="car_id" value="<%=cart.getCar_id() %>">
+        <input type="hidden" name="cart_id" value="<%=cart.getCart_id()%>">
+        <input type="hidden" name="user_id" value="<%=cart.getUser_id() %>">
+        <input type="hidden" name="car_price" value="<%=cart.getCar_price() %>">
+        <input type="hidden" name="total" value="<%=cart.getTotalPrice() %>">
+        <input type="hidden" name="action" value="buyNow">
+          <button type="submit" class="flex-1 text-center bg-[#D4AF37] text-[#0a0a0a] py-4 px-6 rounded-lg shadow-md hover:bg-[#b69530] transition uppercase tracking-wider font-semibold">
+            Buy Now
+          </button>
+        </form>
+          <a href="${pageContext.request.contextPath}/store" class="flex-1 text-center border border-[#D4AF37] text-[#D4AF37] py-4 px-6 rounded-lg hover:bg-[#D4AF37]/10 transition uppercase tracking-wider font-semibold">
             Continue Shopping
           </a>
         </div>
+        <%
+        }
+        %>
       </div>
-    </div>
+    </div> --%>
     
   </div>
+  <div class="flex justify-end">
+  <a href="${pageContext.request.contextPath}/store" 
+     class="text-center border border-[#D4AF37] text-[#D4AF37] py-4 px-6 rounded-lg hover:bg-[#D4AF37]/10 transition uppercase tracking-wider font-semibold">
+    Continue Shopping
+  </a>
+</div>
+
+          <br>
+          <br>
   <%@include file="footer.jsp" %>
   <script type="text/javascript" src="/CollegeTutorial/js/main.js"></script>
 </body>

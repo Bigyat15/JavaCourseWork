@@ -2,6 +2,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="models.productModel" %>
 <%@ page import="models.productImageModel" %>
+<%@ page import="models.categoryModel" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,26 +52,54 @@
    <br>
     <section class="relative py-6 sm:py-8 md:py-12 px-4 bg-gradient-to-r from-black/90 to-black/70">
         <div class="max-w-3xl mx-auto">
+        <form method='GET' action="${pageContext.request.contextPath}/store">
             <div class="relative">
                 <input type="text" 
+                	name="search"
                     class="w-full px-4 sm:px-6 py-3 bg-white/5 border border-white/10 text-white text-sm sm:text-base md:text-lg rounded-full pl-10 sm:pl-12 pr-12 sm:pr-16 focus:outline-none focus:border-primary transition-all" 
-                    placeholder="Search for your dream car...">
+                    placeholder="Search for your dream car..."
+                    value="<%=request.getParameter("search") != null ? request.getParameter("search") : "" %>"
+                    >
                 <button type="submit" 
                     class="absolute right-2 top-1/2 -translate-y-1/2 p-2 sm:p-3 text-primary hover:text-white transition-colors">
                     <i class="fas fa-search text-base sm:text-lg md:text-xl"></i>
                 </button>
             </div>
+            </form>
         </div>
     </section>
 
     <!-- Car Showcase -->
     <section id="models" class="relative p-4 sm:p-6 md:p-8 lg:p-16">
         <div class="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-8 md:mb-12">
-            <button class="px-3 sm:px-4 md:px-8 py-2 sm:py-3 bg-primary text-black uppercase tracking-wider text-xs sm:text-sm transition-all">All Models</button>
-            <button class="px-3 sm:px-4 md:px-8 py-2 sm:py-3 bg-transparent text-white border border-white/20 uppercase tracking-wider text-xs sm:text-sm transition-all hover:bg-primary hover:text-black hover:border-primary">Supercars</button>
-            <button class="px-3 sm:px-4 md:px-8 py-2 sm:py-3 bg-transparent text-white border border-white/20 uppercase tracking-wider text-xs sm:text-sm transition-all hover:bg-primary hover:text-black hover:border-primary">Hypercars</button>
-            <button class="px-3 sm:px-4 md:px-8 py-2 sm:py-3 bg-transparent text-white border border-white/20 uppercase tracking-wider text-xs sm:text-sm transition-all hover:bg-primary hover:text-black hover:border-primary">Limited Edition</button>
-        </div>
+    <a href="${pageContext.request.contextPath}/store"
+       class="px-3 sm:px-4 md:px-8 py-2 sm:py-3 
+              <%= (request.getParameter("category") == null) ? "bg-primary text-black" : "bg-transparent text-white border border-white/20 hover:bg-primary hover:text-black hover:border-primary" %> 
+              uppercase tracking-wider text-xs sm:text-sm transition-all">
+       All Models
+    </a>
+    <%
+    ArrayList<categoryModel> categoryList = (ArrayList<categoryModel>) request.getAttribute("categoryList");
+    String selectedCategory = request.getParameter("category");
+    if (categoryList != null && !categoryList.isEmpty()) {
+        for (categoryModel cm : categoryList) {
+            String categoryName = cm.getCategory_name();
+            boolean isSelected = categoryName.equals(selectedCategory);
+    %>
+    <a href="${pageContext.request.contextPath}/store?category=<%=categoryName %>"
+       class="px-3 sm:px-4 md:px-8 py-2 sm:py-3 
+              <%= isSelected ? "bg-primary text-black" : "bg-transparent text-white border border-white/20 hover:bg-primary hover:text-black hover:border-primary" %> 
+              uppercase tracking-wider text-xs sm:text-sm transition-all">
+        <%= categoryName %>
+    </a>
+    <%
+        }
+    } else {
+    %>
+    <p>No category Found</p>
+    <% } %>
+</div>
+
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mt-6 sm:mt-8 md:mt-16">
             <%

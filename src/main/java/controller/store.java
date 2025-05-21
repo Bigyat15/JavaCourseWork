@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.categoryDAO;
 import DAO.productModelDAO;
+import models.categoryModel;
 import models.productModel;
 
 /**
@@ -19,6 +21,7 @@ import models.productModel;
 public class store extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private productModelDAO dao;
+    private categoryDAO dao1;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -28,6 +31,7 @@ public class store extends HttpServlet {
     }
     public void init() {
     	dao = new productModelDAO();
+    	dao1 = new categoryDAO();
     }
 
 	/**
@@ -35,9 +39,26 @@ public class store extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<productModel> productList = dao.getAllProductDetail();
+		String categoryName = request.getParameter("category");
+		String search = request.getParameter("search");
+		ArrayList<productModel> productList;
+		if(search != null && !search.isEmpty()) {
+			productList = dao.searchCars(search); 
+            System.out.println("Search results for: " + search + ", Products found: " + productList.size());
+		}else if(categoryName !=null && !categoryName.isEmpty()) {
+			productList = dao.getProductsByCategoryName(categoryName);
+            System.out.println("Filtered by category: " + categoryName + ", Products found: " + productList.size());
+		}else {
+			productList = dao.getAllProductDetail();
+			System.out.println("All products loaded: " + productList.size());
+        
+		}
         System.out.println("car: " + productList.size());
         request.setAttribute("productList", productList);
+        
+        ArrayList<categoryModel> allCategories = dao1.getAllCategory(); // For dropdown or links
+        request.setAttribute("productList", productList);
+        request.setAttribute("categoryList", allCategories);
         request.getRequestDispatcher("/pages/store.jsp").forward(request, response);
 	}
 

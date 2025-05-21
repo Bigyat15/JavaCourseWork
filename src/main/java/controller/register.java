@@ -120,6 +120,7 @@ public class register extends HttpServlet {
 	        response.sendRedirect("/CollegeTutorial/pages/register.jsp?error=databaseError");
 	    }
 	}
+	
 
 
 }

@@ -1,6 +1,7 @@
 package models;
 
 public class productImageModel {
+	private int car_images_id;
 	private String car_images_path;
 	private Integer car_id;
 	private String car_name;
@@ -10,11 +11,11 @@ public class productImageModel {
 	private String engine_type;
 	private String performance;
 	private String transmission;
-	
-	
-	public productImageModel(String car_images_path, Integer car_id, String car_name, String car_description,
-			double car_price, String category_name, String engine_type, String performance, String transmission) {
+	public productImageModel(int car_images_id, String car_images_path, Integer car_id, String car_name,
+			String car_description, double car_price, String category_name, String engine_type, String performance,
+			String transmission) {
 		super();
+		this.car_images_id = car_images_id;
 		this.car_images_path = car_images_path;
 		this.car_id = car_id;
 		this.car_name = car_name;
@@ -24,6 +25,12 @@ public class productImageModel {
 		this.engine_type = engine_type;
 		this.performance = performance;
 		this.transmission = transmission;
+	}
+	public int getCar_images_id() {
+		return car_images_id;
+	}
+	public void setCar_images_id(int car_images_id) {
+		this.car_images_id = car_images_id;
 	}
 	public String getCar_images_path() {
 		return car_images_path;
@@ -79,7 +86,8 @@ public class productImageModel {
 	public void setTransmission(String transmission) {
 		this.transmission = transmission;
 	}
-
+	
+	
 	
 	
 	

@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,6 +29,8 @@ public class cart extends HttpServlet {
 
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	System.out.println("Session lost. Cart data not found.");
+
         HttpSession session = request.getSession(false);
         if(session == null) {
             System.out.println("Session is null in cart servlet.");
@@ -53,6 +57,8 @@ public class cart extends HttpServlet {
         } catch (SQLException e) {
             System.err.println("SQLException: " + e.getMessage());
             e.printStackTrace();
+            response.sendRedirect("/CollegeTutorial/pages/somethingWentWrong.jsp");
+			return;
         }
     }
 
@@ -128,7 +134,7 @@ public class cart extends HttpServlet {
             int cartID = dao.createNewCartForUser(userID);
             if("add".equals(action)) {
             	dao.incrementItemQuantity(cartID, carID);
-            	double totalPricee = carPrice * quantityValue;
+            	double totalPricee = carPrice * (quantityValue + 1);
             	dao.updateCartTotalPrice(cartID, totalPricee);
             	
             }else if("subtract".equals(action)){
@@ -137,6 +143,16 @@ public class cart extends HttpServlet {
             	dao.updateCartTotalPrice(cartID, totalPricee);
             }else if("delete".equals(action)){
             	dao.deleteCartItem(cartID, carID);
+            }else if("buyNow".equals(action)) { 
+            	System.out.println("Processing the buying processs"); 
+            	int OrderId = dao.createOrder(totalPrice); 
+            	System.out.println("Added into the order table successfully"); 
+            	dao.addOrderItem(OrderId, carID, cartID, userID);
+            	System.out.println("Added the item successfully"); 
+            	dao.deleteCartItem(cartID, carID);
+            	RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/checkout.jsp");
+            	dispatcher.forward(request, response);
+
             }
             else {
             	cartModel item = new cartModel(userID, cartID, carID, quantity,totalPrice, carName, carDescription, carPrice, storePath);

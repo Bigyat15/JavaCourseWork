@@ -268,7 +268,7 @@
           <p class="text-xs md:text-sm leading-5 md:leading-6 text-gray-300 tracking-widest mb-6">
             <%=cat.getCategory_description()!=null ? cat.getCategory_description():"No description found" %>
           </p>
-          <button class="bg-accent/20 text-accent border-none py-2 md:py-2.5 px-6 md:px-8 text-xs md:text-sm tracking-widest rounded-full cursor-pointer transition-all duration-300 hover:bg-accent hover:text-primary">BROWSE</button>
+          <a href="${pageContext.request.contextPath}/store?category=<%=cat.getCategory_name() %>" class="bg-accent/20 text-accent border-none py-2 md:py-2.5 px-6 md:px-8 text-xs md:text-sm tracking-widest rounded-full cursor-pointer transition-all duration-300 hover:bg-accent hover:text-primary">BROWSE</a>
         </div>
       </div>
       <% 
@@ -322,14 +322,14 @@
             <div class="location-card bg-primary/50 p-6 md:p-8 rounded-2xl border border-accent/20 hover:border-accent/50 transition-all duration-300 cursor-pointer group hover:shadow-2xl hover:shadow-accent/10">
               <div class="flex items-start justify-between">
                 <div>
-                  <h3 class="text-xl md:text-2xl font-cinzel text-accent mb-3 group-hover:text-white transition-colors duration-300">New York Showroom</h3>
+                  <h3 class="text-xl md:text-2xl font-cinzel text-accent mb-3 group-hover:text-white transition-colors duration-300">Pokhara Showroom</h3>
                   <p class="text-gray-300 mb-2 flex items-center">
                     <i class="fas fa-map-marker-alt text-accent mr-2"></i>
-                    123 Luxury Avenue, Manhattan, NY 10001
+                    123 Luxury Avenue
                   </p>
                   <p class="text-gray-300 mb-2 flex items-center">
                     <i class="fas fa-phone text-accent mr-2"></i>
-                    +1 (212) 555-0123
+                    +977 9806178883
                   </p>
                   <p class="text-gray-300 mb-4 flex items-center">
                     <i class="fas fa-clock text-accent mr-2"></i>
@@ -360,7 +360,7 @@
             </div>
             
             <!-- Los Angeles Showroom -->
-            <div class="location-card bg-primary/50 p-6 md:p-8 rounded-2xl border border-accent/20 hover:border-accent/50 transition-all duration-300 cursor-pointer group hover:shadow-2xl hover:shadow-accent/10">
+            <!-- <div class="location-card bg-primary/50 p-6 md:p-8 rounded-2xl border border-accent/20 hover:border-accent/50 transition-all duration-300 cursor-pointer group hover:shadow-2xl hover:shadow-accent/10">
               <div class="flex items-start justify-between">
                 <div>
                   <h3 class="text-xl md:text-2xl font-cinzel text-accent mb-3 group-hover:text-white transition-colors duration-300">Los Angeles Showroom</h3>
@@ -400,7 +400,7 @@
               </div>
             </div>
             
-            <!-- Miami Showroom -->
+            Miami Showroom
             <div class="location-card bg-primary/50 p-6 md:p-8 rounded-2xl border border-accent/20 hover:border-accent/50 transition-all duration-300 cursor-pointer group hover:shadow-2xl hover:shadow-accent/10">
               <div class="flex items-start justify-between">
                 <div>
@@ -439,7 +439,7 @@
                   </li>
                 </ul>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
